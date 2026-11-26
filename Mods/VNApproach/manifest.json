@@ -1,0 +1,13 @@
+{
+  "Name": "VN Talks (letters + approach)",
+  "Author": "Fouky",
+  "Version": "1.2.0",
+  "Description": "One mod for the VN_Talks Character Interact add-on: villagers run to you when a story chapter is waiting, and the chapter letters are added to the game. No Content Patcher needed.",
+  "UniqueID": "Fouky.VNApproach",
+  "MinimumApiVersion": "4.0.0",
+  "EntryDll": "VNApproach.dll",
+  "UpdateKeys": [],
+  "Dependencies": [
+    { "UniqueID": "Fouky.CharacterInteract", "IsRequired": false }
+  ]
+}

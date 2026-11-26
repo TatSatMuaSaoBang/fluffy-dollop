@@ -1,0 +1,11 @@
+{
+  // LETTERS. One entry per letter. The id must match the AddMail line in the villager file:
+  // "AddMail Current VNTalks_Robin_Letter1 Tomorrow"  ->  "VNTalks_Robin_Letter1" below.
+  // ^ = new line.  @ = player name.  [#]Title = the title shown in the collections tab.
+  "VNTalks_Robin_Letter1": "Dear @,^Thank you for the hour with the chair. I haven't had company in the shop like that in a long time.^It still isn't finished, but it's closer than it was.^   -Robin[#]A note from Robin",
+  "VNTalks_Robin_Letter2": "Dear @,^I left the cabin plans on my bench in case you want to look at them again. No rush. No invoice.^Whatever you decide, the door is open.^   -Robin[#]Robin's plans",
+  "VNTalks_Sam_Letter1": "Hey @,^Wrote down the bridge before I forgot it. It's still garbage, but it's OUR garbage.^Come by and tell me if it's any better.^   -Sam[#]A note from Sam",
+  "VNTalks_Sam_Letter2": "@,^I thought about what you said. I'm not going to decide anything yet, but I'm thinking about it a lot.^Thanks for being in my corner.^   -Sam[#]Sam's note",
+  "VNTalks_Caroline_Letter1": "Dear @,^I found one of the old letters. The one I never sent. I'm not brave enough to hand it over yet, but I wanted you to know it exists.^   -Caroline[#]A letter from Caroline",
+  "VNTalks_Caroline_Letter2": "Dear @,^I wrote this one the night after our walk, and this time I'm actually sending it.^Thank you for answering. I'm not sure I've ever been this happy.^   -Caroline[#]A letter from Caroline"
+}

@@ -1,0 +1,114 @@
+{
+  // ROBIN: one file = everything Robin says in this add-on.
+  // 1) Robin_Chat   : the "Have a proper chat" button. Every use counts toward the chapters.
+  // 2) Robin_Ch1-3  : story chapters. They unlock by hearts + number of chats (see Conditions).
+  "Npcs": [ "Robin" ],
+  "Actions": [
+
+    // ---------- CHAT: add more lines to the Say list, nothing else to change ----------
+    {
+      "Id": "Robin_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": { "Talks_{{NpcName}}": 1 },
+      "Say": [
+        "Sawdust gets everywhere, @. I found some in my tea this morning.$h#$b#I've decided it's seasoning.",
+        "Maru keeps asking why I still cut boards by hand when there's a perfectly good machine.#$b#Because the machine never tells me when the grain is about to split. The wood does.",
+        "I like it when the shop is quiet. Just the saw and the radio.$h",
+        "Do you ever look at a building and wonder who stood there first, with a pencil and a bad idea?#$b#I think about that a lot.",
+        "A good joint should hold without glue. Glue is for when you aren't sure of yourself.$u#$b#...Hm. That applies to more than carpentry, doesn't it.",
+        "Some days I finish three projects. Some days I sand one board for an hour. Both count, @.$h"
+      ]
+    },
+
+    // ---------- CHAPTER 1: The chair (2 hearts, 2 chats) ----------
+    {
+      "Id": "Robin_Ch1",
+      "Label": "Come see the chair",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Robin waves you into the back of the shop. In the corner, under a dust sheet, sits something about the size of a small armchair." },
+        { "Say": "Don't laugh. It's been under that sheet for six years.$s" },
+        { "Say": "It was going to be a rocking chair. I drew it the week Maru was born. Then the orders came in, and the orders always came in, and it just stayed a drawing with legs." },
+        { "Say": "I can't decide how the arms should curve. Every time I try, it feels like deciding who is going to sit in it.#$b#Which is silly. It's a chair." },
+        { "Ask": {
+            "Prompt": "Robin",
+            "Options": [
+              { "Label": "Take your time. A chair like that is worth it.",
+                "Steps": [ { "Say": "Take my time. Funny, everybody always tells me to hurry.$h" } ] },
+              { "Label": "Why not just finish it?",
+                "Steps": [ { "Say": "Because then it's done, and I'd have to find out whether it's any good.$s#$b#That's the real answer. I just never say it out loud." } ] },
+              { "Label": "Can I help?",
+                "Steps": [ { "Say": "Help? Oh. Well. Hold this end steady while I look at it. That's all I need.$h#$b#...That's all I needed, apparently.", "Friendship": 20 } ] }
+            ]
+        } },
+        { "Narrate": "You hold the chair arm in place while Robin turns her pencil over and over in her fingers. An hour passes and neither of you notices." },
+        { "SetFlags": [ "Ch1_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Robin_Letter1 Tomorrow" ],
+          "Say": "Thank you, @. Truly. I haven't had company in here like that in a long time.$h#$b#It isn't finished. But it's closer than it was." }
+      ]
+    },
+
+    // ---------- CHAPTER 2: The plans (4 hearts, 6 chats, Chapter 1 done) ----------
+    {
+      "Id": "Robin_Ch2",
+      "Label": "Look at the plans on the bench",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "A roll of paper is pinned flat on Robin's workbench with four carpenter's pencils. She doesn't say anything. She just nods at it." },
+        { "Say": "It's a cabin. Small. One room and a porch, right where the trees begin.$h#$b#I've drawn it eleven times. I keep changing the porch." },
+        { "Say": "I wasn't going to show anyone. But you've been in the shop, you've held the chair, and you didn't make a thing of it.#$b#So I'm asking." },
+        { "Say": "It's for you, if you want it. I haven't decided where. I only know I want to build something for a person, just once, without sending a bill afterward." },
+        { "Ask": {
+            "Prompt": "Robin",
+            "Options": [
+              { "Label": "It's beautiful, Robin.",
+                "Steps": [ { "Say": "Stop. I'll smudge the drawing and then I'll have to draw it a twelfth time.$h", "Friendship": 20 } ] },
+              { "Label": "I don't know if I can accept this.",
+                "Steps": [ { "Say": "I know. That's why it isn't an invoice and it isn't a gift. It's just plans on a bench.#$b#You can look at them without owing me anything." } ] },
+              { "Label": "Make the porch wider.",
+                "Steps": [ { "Say": "Wider. Yes. Of course, wider!$h#$b#Twelve times, then. I'll draw it twelve times." } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch2_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Robin_Letter2 Tomorrow" ],
+          "Say": "I'll leave them out. Look again whenever you like.$h#$b#The door's open." }
+      ]
+    },
+
+    // ---------- CHAPTER 3: The finished chair (6 hearts, 10 chats, Chapter 2 done) ----------
+    {
+      "Id": "Robin_Ch3",
+      "Label": "Robin has something to show you",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "The dust sheet is on the floor. The chair stands in the middle of the shop, and the arms curve as if they were always going to." },
+        { "Say": "I finished it last night. The arms were the easy part, it turns out. I just had to stop deciding who it was for.$h" },
+        { "Say": "It's yours, @. Don't argue. I want it in a house where someone actually sits.#$b#And the cabin... I cut the first board this morning. The porch is wide. Just so you know." },
+        { "Ask": {
+            "Prompt": "Robin",
+            "Options": [
+              { "Label": "Then I'll sit in it every evening.",
+                "Steps": [ { "Say": "Good. That's all I ever wanted from it.$h" } ] },
+              { "Label": "Robin, you should keep it.",
+                "Steps": [ { "Say": "No. I thought about it all night. A thing kept under a sheet isn't a chair anymore, it's a regret.#$b#Take it. Please." } ] },
+              { "Label": "Let's build the cabin together.",
+                "Steps": [ { "Say": "Together. Yes. I'll bring the saw. You bring the patience, there's a lot of sanding.$h", "Friendship": 20 } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch3_{{NpcName}}" ],
+          "Friendship": 100,
+          "Reward": { "Items": [ { "Id": "(O)388", "Count": 100 } ] },
+          "Say": "And take the wood. I always have more than I admit.$h" }
+      ]
+    }
+  ]
+}

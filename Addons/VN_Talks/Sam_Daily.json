@@ -1,0 +1,214 @@
+{
+  // SAM, everyday interactions (the story chapters live in Sam.json).
+  // Menu order: chapter (5) > Talk about... (40) > Say something (45) > Time together (48) > Chat (50) > Remember when... (60)
+  "Npcs": [ "Sam" ],
+  "Actions": [
+
+    // ================= TALK ABOUT... (sub-menu of topics) =================
+    {
+      "Id": "Sam_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Sam",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+
+        // His day: the answer depends on weather and time of day.
+        {
+          "Id": "Sam_Day",
+          "Label": "Ask about his day",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Random": [
+              { "Weight": 3, "Conditions": "WEATHER Here Rain",
+                "Steps": [ { "Say": "Rain means no skateboarding. Rain means I rewrite lyrics until they sound like a weather report.$u" } ] },
+              { "Weight": 2, "Conditions": "TIME 600 1200",
+                "Steps": [ { "Say": "Mom made pancakes. Vincent ate seven. I ate the last one and a lecture.$h" } ] },
+              { "Weight": 2, "Conditions": "TIME 1200 1800",
+                "Steps": [ { "Say": "Band practice later. Seb says we need a drummer. I say we need confidence. We both say we need pizza.$h" } ] },
+              { "Weight": 2, "Conditions": "TIME 1800 2600",
+                "Steps": [ { "Say": "Dinner at home is loud. Vincent argues, Mom laughs, Dad tries to look stern and fails.$h#$b#Loud is good. Loud means everyone's here." } ] },
+              { "Weight": 1,
+                "Steps": [ { "Say": "Same old Pelican Town. Which is weirdly the thing I'd miss most if I left.$h" } ] }
+            ] }
+          ]
+        },
+
+        // His passion: pick a question.
+        {
+          "Id": "Sam_Music",
+          "Label": "Ask about music",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "Music? Okay, careful, I can go on for hours.$h#$b#What do you want to know?" },
+            { "Ask": {
+              "Prompt": "Sam",
+              "Options": [
+                { "Label": "What do you listen to?",
+                  "Steps": [ { "Say": "Anything with an honest drum part. Even bad songs, if the drummer means it.$h" } ] },
+                { "Label": "How do you write a song?",
+                  "Steps": [ { "Say": "Badly, at first. Then I sleep on it, then it's less bad. Nobody tells you that part is the whole job.$h" } ] },
+                { "Label": "Play me something?",
+                  "Steps": [
+                    { "Narrate": "Sam strums three chords, stops, restarts, laughs." },
+                    { "Say": "That's the intro. The rest is in my notebook. My notebook is in my sock drawer.$h" }
+                  ] }
+              ]
+            } }
+          ]
+        },
+
+        // The people he knows.
+        {
+          "Id": "Sam_People",
+          "Label": "Ask about his friends",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "My friends? Where do I even start.$h" },
+            { "Ask": {
+              "Prompt": "Sam",
+              "Options": [
+                { "Label": "What's Abigail like?",
+                  "Steps": [ { "Say": "Abby's unstoppable. She rolled a twenty once and now she thinks she rules the world.$h" } ] },
+                { "Label": "And Sebastian?",
+                  "Steps": [ { "Say": "Seb's the quiet storm. Hits the right note and walks off like it was nothing.$u#$b#I'd never tell him he's the best of us.$h" } ] },
+                { "Label": "How's your brother?",
+                  "Steps": [ { "Say": "Vincent's my little shadow. He copies my walk. It's terrifying.$h" } ] }
+              ]
+            } }
+          ]
+        },
+
+        // A deeper topic that unlocks with hearts and after a few other topics.
+        {
+          "Id": "Sam_Dreams",
+          "Label": "Ask about his dreams",
+          "Limit": "Ever",
+          "Conditions": "PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Topics_{{NpcName}} 3",
+          "Friendship": 30,
+          "Steps": [
+            { "Say": "My dreams? Okay. Don't laugh.#$b#I want to play one song so well the room goes silent. Not cheering. Silent. Like it hit people somewhere words can't reach." },
+            { "Ask": {
+              "Prompt": "Sam",
+              "Options": [
+                { "Label": "That's not dumb.",
+                  "Steps": [ { "Say": "...Thanks. I kept waiting for you to laugh.$h" } ] },
+                { "Label": "Then do it.",
+                  "Steps": [ { "Say": "Just do it. Sure. Like deciding to sneeze.$u#$b#...But yeah. Yeah. Maybe I will.$h" } ] }
+              ]
+            } }
+          ]
+        }
+      ]
+    },
+
+    // ================= SAY SOMETHING (pick a tone, like a dating sim) =================
+    // Sam likes it when you play along: playful 10, kind 5, honest 5.
+    {
+      "Id": "Sam_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        { "Random": [
+
+          { "Steps": [
+            { "Say": "Okay, new song title. Static Summer, or Porch Light Parade?" },
+            { "Ask": { "Prompt": "Sam", "Options": [
+              { "Label": "Both are great!",
+                "Steps": [ { "Say": "That's what my mom says. You're no help, but thanks.$h", "Friendship": 5 } ] },
+              { "Label": "Static Summer. The other sounds like an insurance jingle.",
+                "Steps": [ { "Say": "Ouch. Accurate, but ouch.$u", "Friendship": 5 } ] },
+              { "Label": "Call it Sam Is Late To Rehearsal.",
+                "Steps": [ { "Say": "Ha! Okay, that's the B-side.$h", "Friendship": 10 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "Be honest. Would you come to a show of ours if it wasn't me asking?" },
+            { "Ask": { "Prompt": "Sam", "Options": [
+              { "Label": "I'd be first in line.",
+                "Steps": [ { "Say": "First in line. Okay. I'm framing that.$h", "Friendship": 5 } ] },
+              { "Label": "Yes, but I'd heckle the tuning.",
+                "Steps": [ { "Say": "Fair. Our tuning is a cry for help.$u", "Friendship": 5 } ] },
+              { "Label": "Front row, throwing socks.",
+                "Steps": [ { "Say": "Socks! That's the dream! Clean ones, though.$h", "Friendship": 10 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "I haven't skated in three days. Is that a bad sign?" },
+            { "Ask": { "Prompt": "Sam", "Options": [
+              { "Label": "You'll get back to it.",
+                "Steps": [ { "Say": "Yeah. Yeah, probably. Thanks.$h", "Friendship": 5 } ] },
+              { "Label": "Maybe you needed the break.",
+                "Steps": [ { "Say": "Hm. Maybe. Don't tell Seb, he'll say I'm growing up.$u", "Friendship": 5 } ] },
+              { "Label": "Your board filed a missing-person report.",
+                "Steps": [ { "Say": "Ha! Okay, okay, I'm going. Right now. After lunch.$h", "Friendship": 10 } ] }
+            ] } }
+          ] }
+
+        ] }
+      ]
+    },
+
+    // ================= SPEND SOME TIME TOGETHER =================
+    {
+      "Id": "Sam_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        { "Narrate": "You sit with Sam on the curb. He drums an unfinished song on his knees." },
+        { "Pause": 800 },
+        { "Random": [
+          { "Weight": 3, "Conditions": "WEATHER Here Rain",
+            "Steps": [
+              { "Narrate": "You share the awning while rain taps a rhythm on the tin above you." },
+              { "Emote": "Music" },
+              { "Say": "That's a snare roll. Listen. Nature's drummer is better than ours.$h" }
+            ] },
+          { "Weight": 2, "Conditions": "TIME 1700 2600",
+            "Steps": [
+              { "Narrate": "The sky goes orange over the rooftops. Sam hums something quiet, almost to himself." },
+              { "Say": "Don't tell the band I did this. Sitting. Just sitting. It's... nice.$h" }
+            ] },
+          { "Weight": 2,
+            "Steps": [
+              { "Narrate": "He hums the chorus until you're humming it back." },
+              { "Say": "See? You've got an ear. Don't tell Seb or he'll start charging you for lessons.$h" }
+            ] }
+        ] }
+      ]
+    },
+
+    // ================= REMEMBER WHEN... (unlocks as chapters are completed) =================
+    {
+      "Id": "Sam_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Sam",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        { "Id": "Sam_Mem1", "Label": "Remember the bridge?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The bridge. Still can't believe it works. It sits there, quiet and confident, like it knew all along.$h" },
+        { "Id": "Sam_Mem2", "Label": "Remember the offer?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "That day on the board. You didn't tell me what to do. Do you know how rare that is?$s#$b#I keep thinking about it.$h" },
+        { "Id": "Sam_Mem3", "Label": "Remember the song?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "I keep hearing it in my head, front row and all. You're in the audience every time. I hope that's okay.$h" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  // CAROLINE: one file = everything Caroline says in this add-on. Same layout as Robin.json.
+  "Npcs": [ "Caroline" ],
+  "Actions": [
+
+    // ---------- CHAT: add more lines to the Say list, nothing else to change ----------
+    {
+      "Id": "Caroline_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": { "Talks_{{NpcName}}": 1 },
+      "Say": [
+        "The tea's gone cold again. I get lost watching the garden and forget the cup is even there.$h",
+        "I used to write long letters to everyone. Real ink, real stamps. Now I mostly just talk, which is lovely, but it doesn't keep.$s",
+        "Pierre says I fuss over the plants more than the customers. He isn't wrong.$h",
+        "Some afternoons the house gets so quiet I can hear the clock deciding whether to bother.$s#$b#Then Abigail clatters in and it's all over. I wouldn't trade it.$h",
+        "I've been thinking about the sunroom. It's the only room that feels like it belongs to me.$h",
+        "There's something freeing about being a little old-fashioned, @. Letting the light decide when the day starts.$h"
+      ]
+    },
+
+    // ---------- CHAPTER 1: The old letter (2 hearts, 2 chats) ----------
+    {
+      "Id": "Caroline_Ch1",
+      "Label": "Caroline is holding a letter",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Caroline sits by the sunroom window with a letter in her lap. The paper has gone soft and yellow at the edges." },
+        { "Say": "Oh, @. I didn't hear you come in.$h#$b#I was just looking at something I never sent." },
+        { "Say": "It's twenty years old. I wrote it after the last time I saw someone I cared about very much. Then I put it in a drawer, because the right words never came, and the wrong ones did." },
+        { "Say": "I found it this morning while I was looking for a pen. Isn't that funny? A letter you never sent, waiting patiently in a drawer." },
+        { "Ask": {
+            "Prompt": "Caroline",
+            "Options": [
+              { "Label": "What did it say?",
+                "Steps": [ { "Say": "That I was sorry. And that I wasn't as brave as I wanted to be.$s" } ] },
+              { "Label": "It's never too late to send it.",
+                "Steps": [ { "Say": "Oh, don't say that so kindly. I might believe you.$h" } ] },
+              { "Label": "You don't have to decide today.",
+                "Steps": [ { "Say": "No. No, I don't. That's a gift, isn't it? Time.$h", "Friendship": 20 } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch1_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Caroline_Letter1 Tomorrow" ],
+          "Say": "Thank you for sitting with me. I'm not brave enough to hand it over yet, but now someone knows it exists.#$b#That's something.$h" }
+      ]
+    },
+
+    // ---------- CHAPTER 2: The walk (4 hearts, 6 chats, Chapter 1 done) ----------
+    {
+      "Id": "Caroline_Ch2",
+      "Label": "Take a walk with Caroline",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Caroline asks if you'd walk with her. Not anywhere in particular. You end up following the river path until the light turns gold." },
+        { "Say": "I used to walk this way every evening. Then I stopped, and I couldn't tell you when. Funny how you can lose a habit and not notice until someone finds it again.$h" },
+        { "Say": "I've been thinking about the letter. And how many other things I've put in drawers, waiting for the right words." },
+        { "Say": "Do you ever write something down and never send it? Or the reverse: say something out loud you'd rather have written?" },
+        { "Ask": {
+            "Prompt": "Caroline",
+            "Options": [
+              { "Label": "I write things down to know what I think.",
+                "Steps": [ { "Say": "Yes! That's exactly it. It's the only way I ever find out.$h" } ] },
+              { "Label": "I'd rather say it out loud.",
+                "Steps": [ { "Say": "Braver than me. I get halfway through a sentence and the ink runs dry.$h" } ] },
+              { "Label": "Why not do both?",
+                "Steps": [ { "Say": "Both. Write it, and then say it. Oh, @. You make it sound so simple.$h", "Friendship": 20 } ] }
+            ]
+        } },
+        { "Narrate": "You stop at the bridge. For a while nobody says anything, and it's the comfortable kind of quiet." },
+        { "SetFlags": [ "Ch2_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Caroline_Letter2 Tomorrow" ],
+          "Say": "I think I'm going to write it all again tonight. Properly. And this time, send it.$h#$b#Thank you for walking with me." }
+      ]
+    },
+
+    // ---------- CHAPTER 3: The reply (6 hearts, 10 chats, Chapter 2 done) ----------
+    {
+      "Id": "Caroline_Ch3",
+      "Label": "Caroline has news",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Caroline meets you at the sunroom door with an envelope pressed carefully against her chest. It has a stamp on it. It has an address." },
+        { "Say": "It's done. Addressed, stamped, even sealed. I'm taking it to the post box in the morning, and I wanted you here first.$h" },
+        { "Say": "I wrote that I was sorry. I wrote that I'm proud of who I've become in spite of the drawers.#$b#And I mentioned you, @. Only kindly. I said someone sat with an old letter and never made me feel foolish." },
+        { "Ask": {
+            "Prompt": "Caroline",
+            "Options": [
+              { "Label": "I'll walk you to the post box.",
+                "Steps": [ { "Say": "Would you? Oh, I'd like that very much.$h", "Friendship": 20 } ] },
+              { "Label": "I'm proud of you.",
+                "Steps": [ { "Say": "Oh, don't. I'll need a handkerchief and I've left them all in the other room.$s#$b#...Thank you.$h" } ] },
+              { "Label": "What if they never reply?",
+                "Steps": [ { "Say": "Then I'll have said it. That was always the part I couldn't do.#$b#The rest isn't up to me, and I think that's a relief.$h" } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch3_{{NpcName}}" ],
+          "Friendship": 100,
+          "Reward": { "Items": [ { "Id": "(O)614", "Count": 3 } ] },
+          "Say": "Take these, please. Green tea, from the first batch I've made in years.#$b#Thank you, @. Truly. For all of it.$l" }
+      ]
+    }
+  ]
+}

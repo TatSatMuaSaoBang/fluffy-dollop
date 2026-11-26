@@ -1,0 +1,116 @@
+{
+  // SAM: one file = everything Sam says in this add-on. Same layout as Robin.json.
+  "Npcs": [ "Sam" ],
+  "Actions": [
+
+    // ---------- CHAT: add more lines to the Say list, nothing else to change ----------
+    {
+      "Id": "Sam_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": { "Talks_{{NpcName}}": 1 },
+      "Say": [
+        "Dude, I wrote four bars last night and then slept through all of them. Does that count?$h",
+        "Mom says I should eat breakfast like a normal person. Normal people don't write songs at 3 AM, so I guess that cancels out.$u",
+        "You ever hear a song and it's like someone read your mind and was a little rude about it?",
+        "Sebastian says my lyrics are earnest. He says it like it's a diagnosis.$u#$b#I'm choosing to be flattered.",
+        "Vincent keeps trying to learn the chords. It's a tiny stubborn mess and I love it.$h",
+        "Skateboarding is easy. You fall, you get up, nobody grades you. Songs grade you.$s"
+      ]
+    },
+
+    // ---------- CHAPTER 1: The bridge (2 hearts, 2 chats) ----------
+    {
+      "Id": "Sam_Ch1",
+      "Label": "Help Sam with the bridge",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Sam sits on the edge of the bench, notebook open, one knee bouncing. He holds it up as you walk over." },
+        { "Say": "@, perfect timing. I need a second pair of ears. The verse is done. The chorus is done. The bridge is a crime scene.$h" },
+        { "Say": "It's supposed to be the part where everything changes. Instead it just sits there. Like somebody's uncle at a wedding." },
+        { "Narrate": "He hums the melody, a little off key, a little too fast." },
+        { "Ask": {
+            "Prompt": "Sam",
+            "Options": [
+              { "Label": "Slow it down.",
+                "Steps": [ { "Say": "Slow it... oh. Oh. That's it. It was never supposed to be fast, it's the quiet part!$h" } ] },
+              { "Label": "What is the bridge about?",
+                "Steps": [ { "Say": "About? ...I don't know. I think it's about what happens after the part where you're sure.$s#$b#Huh. I should write that down." } ] },
+              { "Label": "Play it again. I'll just listen.",
+                "Steps": [ { "Say": "Okay. Don't judge. Actually, judge. But gently.$h", "Friendship": 20 } ] }
+            ]
+        } },
+        { "Narrate": "Sam scribbles for a while, crosses something out, scribbles again." },
+        { "SetFlags": [ "Ch1_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Sam_Letter1 Tomorrow" ],
+          "Say": "I think I've got it. Don't look, it's still garbage.$h#$b#But it's our garbage now. Thanks, @." }
+      ]
+    },
+
+    // ---------- CHAPTER 2: The offer (4 hearts, 6 chats, Chapter 1 done) ----------
+    {
+      "Id": "Sam_Ch2",
+      "Label": "Sam needs to ask you something",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Sam isn't skating. He's sitting on his board with it flat on the ground, watching the road out of town." },
+        { "Say": "A guy from the city heard a tape of the band. Not the new song. The old one, the bad one.$u#$b#He wants us to play a night at his bar. Three weeks. Maybe more if it goes well." },
+        { "Say": "It's everything I said I wanted. So why do I feel like I'm at the top of a ramp and I haven't looked at the bottom?$s" },
+        { "Say": "Mom doesn't know yet. Vincent definitely doesn't know. And everyone's only just got used to being in one house again. I don't want to be the one who leaves." },
+        { "Ask": {
+            "Prompt": "Sam",
+            "Options": [
+              { "Label": "Go. You'd regret not trying.",
+                "Steps": [ { "Say": "That's what I tell myself in my best moments.$h#$b#It's the other moments that are the problem." } ] },
+              { "Label": "Stay, at least until you're sure.",
+                "Steps": [ { "Say": "...Yeah. Sure. That makes sense. Not deciding feels like a decision, though, you know?$s" } ] },
+              { "Label": "What would make it easier to choose?",
+                "Steps": [ { "Say": "...Nobody's asked me that. Everyone just tells me what to do.#$b#I think I'd want somebody to be okay with either answer.$h#$b#Are you? Okay with either, I mean?", "Friendship": 20 } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch2_{{NpcName}}" ],
+          "Friendship": 50,
+          "TriggerActions": [ "AddMail Current VNTalks_Sam_Letter2 Tomorrow" ],
+          "Say": "I'm not deciding yet. But I'm thinking about it a lot.#$b#Thanks for not telling me what to do. Weirdly, that helped more than advice would have.$h" }
+      ]
+    },
+
+    // ---------- CHAPTER 3: The decision (6 hearts, 10 chats, Chapter 2 done) ----------
+    {
+      "Id": "Sam_Ch3",
+      "Label": "Sam made up his mind",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        { "Narrate": "Sam is waiting for you at the edge of town, guitar case on his back, board under one arm. He's smiling, and for once he doesn't look like he's about to bolt." },
+        { "Say": "I told Mom last night. And the rest of the house. Even Vincent, who said cool and went back to his game.$h" },
+        { "Say": "I'm going. Just for the three weeks. Then I'm coming home, whatever happens. Turns out that part was never up for a vote." },
+        { "Say": "But first I want to play the song somewhere that isn't my bedroom. Somewhere with people I know.#$b#Would you be there? Front row? I'll try not to make eye contact." },
+        { "Ask": {
+            "Prompt": "Sam",
+            "Options": [
+              { "Label": "I'll be front row.",
+                "Steps": [ { "Say": "Okay. Now I'm nervous. Great. Perfect. Thanks.$h" } ] },
+              { "Label": "Play it for yourself first.",
+                "Steps": [
+                  { "Say": "...Yeah. I will. Right here, right now.#$b#Don't laugh." },
+                  { "Narrate": "Sam sits on the curb and plays the bridge quietly. He doesn't look up until the last note." }
+                ] },
+              { "Label": "Whatever you pick, I'm in your corner.",
+                "Steps": [ { "Say": "That's... yeah. That's all I needed.$h", "Friendship": 20 } ] }
+            ]
+        } },
+        { "SetFlags": [ "Ch3_{{NpcName}}" ],
+          "Friendship": 100,
+          "Reward": { "Items": [ { "Id": "(O)206", "Count": 2 } ] },
+          "Say": "Here. I owe you a pizza. Probably two. Don't tell Mom.$h" }
+      ]
+    }
+  ]
+}

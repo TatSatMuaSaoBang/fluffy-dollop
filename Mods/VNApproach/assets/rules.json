@@ -1,0 +1,49 @@
+{
+  // THE CHAPTER LADDER. These conditions must match the Conditions of the
+  // Ch1 / Ch2 / Ch3 choices in the VN_Talks add-on (hearts, chats, flags).
+  // One rule per chapter, for EVERY npc. NPCs without a VN_Talks file never reach
+  // 2 chats, so they are never affected.
+  "Chapter1": {
+    "Npcs": [ "*" ],
+    "Required": true,
+    "Priority": 10,
+    "Conditions": "PLAYER_HEARTS Current {NpcName} 2, Fouky.CharacterInteract_COUNTER Talks_{NpcName} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{NpcName}",
+    "StartLines": [ "@! Wait up, I wanted to ask you something!", "@, got a minute?" ],
+    "StartEmote": "Exclamation",
+    "ArriveEmote": "Happy",
+    "OpenMenu": true
+  },
+  "Chapter2": {
+    "Npcs": [ "*" ],
+    "Required": true,
+    "Priority": 20,
+    "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{NpcName}, PLAYER_HEARTS Current {NpcName} 4, Fouky.CharacterInteract_COUNTER Talks_{NpcName} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{NpcName}",
+    "StartLines": [ "@! There you are. Can we talk?", "@, please, wait. I need to tell you something." ],
+    "StartEmote": "Exclamation",
+    "ArriveEmote": "Question",
+    "OpenMenu": true
+  },
+  "Chapter3": {
+    "Npcs": [ "*" ],
+    "Required": true,
+    "Priority": 30,
+    "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{NpcName}, PLAYER_HEARTS Current {NpcName} 6, Fouky.CharacterInteract_COUNTER Talks_{NpcName} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{NpcName}",
+    "StartLines": [ "@! I've been looking for you.", "@, hold on, this is important." ],
+    "StartEmote": "Exclamation",
+    "ArriveEmote": "Heart",
+    "OpenMenu": true
+  },
+
+  // Optional flavour: friends sometimes run over just to say hi. No menu, only a bubble.
+  "DropBy": {
+    "Npcs": [ "*" ],
+    "Required": false,
+    "Chance": 0.15,
+    "Cooldown": "Day",
+    "Conditions": "PLAYER_HEARTS Current {NpcName} 4, TIME 900 1900",
+    "StartLines": [ "@! Hey!", "@, wait for me!" ],
+    "StartEmote": "Happy",
+    "ArriveLines": [ "Phew. Hi!", "Got you!" ],
+    "OpenMenu": false
+  }
+}

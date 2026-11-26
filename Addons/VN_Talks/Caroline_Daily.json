@@ -1,0 +1,211 @@
+{
+  // CAROLINE, everyday interactions (the story chapters live in Caroline.json).
+  // Menu order: chapter (5) > Talk about... (40) > Say something (45) > Time together (48) > Chat (50) > Remember when... (60)
+  "Npcs": [ "Caroline" ],
+  "Actions": [
+
+    // ================= TALK ABOUT... (sub-menu of topics) =================
+    {
+      "Id": "Caroline_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Caroline",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+
+        // Her day: the answer depends on weather and time of day.
+        {
+          "Id": "Caroline_Day",
+          "Label": "Ask about her day",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Random": [
+              { "Weight": 3, "Conditions": "WEATHER Here Rain",
+                "Steps": [ { "Say": "I love rain on the sunroom glass. It sounds like someone typing a very long, very gentle letter.$h" } ] },
+              { "Weight": 2, "Conditions": "TIME 600 1200",
+                "Steps": [ { "Say": "Tea, a quiet corner, a few minutes of nobody needing me. A small, selfish luxury.$h" } ] },
+              { "Weight": 2, "Conditions": "TIME 1200 1800",
+                "Steps": [ { "Say": "I've been tidying the shelves. Every drawer tells me a story I forgot I'd told myself.$s#$b#...I should write them down." } ] },
+              { "Weight": 2, "Conditions": "TIME 1800 2600",
+                "Steps": [ { "Say": "Supper's simmering. The house smells like thyme and old wood. Some days that's the whole definition of home.$h" } ] },
+              { "Weight": 1,
+                "Steps": [ { "Say": "A gentle day. I'll take as many of those as the valley can spare.$h" } ] }
+            ] }
+          ]
+        },
+
+        // Her passion: pick a question.
+        {
+          "Id": "Caroline_Garden",
+          "Label": "Ask about her garden",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "My garden? Oh, you've found my favorite subject.$h#$b#What would you like to know?" },
+            { "Ask": {
+              "Prompt": "Caroline",
+              "Options": [
+                { "Label": "What's your favorite plant?",
+                  "Steps": [ { "Say": "Tea, obviously. But I have a soft spot for the little blue flowers by the wall. They bloom whether anyone looks or not.$h" } ] },
+                { "Label": "Any gardening advice?",
+                  "Steps": [ { "Say": "Water early, talk to them a little, and don't hover. Plants and people both grow better when you let them breathe.$h" } ] },
+                { "Label": "What goes in your tea?",
+                  "Steps": [ { "Say": "Green leaves, patience, and a pinch of the quiet I get every afternoon.$h" } ] }
+              ]
+            } }
+          ]
+        },
+
+        // The people she knows.
+        {
+          "Id": "Caroline_People",
+          "Label": "Ask about the people she knows",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "The people I know? Oh, I could talk for an hour.$h" },
+            { "Ask": {
+              "Prompt": "Caroline",
+              "Options": [
+                { "Label": "What's Pierre like?",
+                  "Steps": [ { "Say": "Pierre works so hard. I try to remind him that resting isn't the same as failing.$s" } ] },
+                { "Label": "And Abigail?",
+                  "Steps": [ { "Say": "Abigail is my wild, bright, wonderful thundercloud. She'll go far. I only wish she'd tell me where she's going.$h" } ] },
+                { "Label": "Do you and Jodi talk?",
+                  "Steps": [ { "Say": "Jodi and I trade recipes and worries. Mostly worries. Mostly recipes.$h" } ] }
+              ]
+            } }
+          ]
+        },
+
+        // A deeper topic that unlocks with hearts and after a few other topics.
+        {
+          "Id": "Caroline_Dreams",
+          "Label": "Ask about her dreams",
+          "Limit": "Ever",
+          "Conditions": "PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Topics_{{NpcName}} 3",
+          "Friendship": 30,
+          "Steps": [
+            { "Say": "I'd like to write again. A real book, maybe, or just one long letter to my younger self.#$b#Something that says: you were braver than you thought." },
+            { "Ask": {
+              "Prompt": "Caroline",
+              "Options": [
+                { "Label": "That isn't silly.",
+                  "Steps": [ { "Say": "You're kind to say so. A shopkeeper's wife with a novel. Imagine.$h" } ] },
+                { "Label": "Start today.",
+                  "Steps": [ { "Say": "Today? Oh, my goodness. I'd have to find a pen first.$h#$b#...I know exactly where one is.$h" } ] }
+              ]
+            } }
+          ]
+        }
+      ]
+    },
+
+    // ================= SAY SOMETHING (pick a tone, like a dating sim) =================
+    // Caroline likes it when you are kind: kind 10, honest 5, playful 5.
+    {
+      "Id": "Caroline_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        { "Random": [
+
+          { "Steps": [
+            { "Say": "Do you think I've left it too late to learn something new?" },
+            { "Ask": { "Prompt": "Caroline", "Options": [
+              { "Label": "It's never too late.",
+                "Steps": [ { "Say": "You say it like it's a fact. I'm almost convinced.$h", "Friendship": 10 } ] },
+              { "Label": "It'll be hard, but you're capable.",
+                "Steps": [ { "Say": "Hard and capable. I'll take both.$h", "Friendship": 5 } ] },
+              { "Label": "Start before the plants take over.",
+                "Steps": [ { "Say": "Ha! They've already started.$h", "Friendship": 5 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "Is it strange that I miss the sound of a pen scratching on paper?" },
+            { "Ask": { "Prompt": "Caroline", "Options": [
+              { "Label": "Not strange at all. I miss things like that too.",
+                "Steps": [ { "Say": "Oh. Yes. Small sounds. They hold so much.$h", "Friendship": 10 } ] },
+              { "Label": "A little, but it's charming.",
+                "Steps": [ { "Say": "Charming. I'll take it. Better than dusty.$h", "Friendship": 5 } ] },
+              { "Label": "I'll find you a quill.",
+                "Steps": [ { "Say": "A quill! Now I'll have to write something worthy.$h", "Friendship": 5 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "I baked too many scones. Do you ever make too much of a good thing?" },
+            { "Ask": { "Prompt": "Caroline", "Options": [
+              { "Label": "Never. Good things deserve company.",
+                "Steps": [ { "Say": "That's lovely. I'll remember that when I'm eating scones for a week.$h", "Friendship": 10 } ] },
+              { "Label": "Always. It's why I'm never hungry for dinner.",
+                "Steps": [ { "Say": "Ha! Honest, at least.$h", "Friendship": 5 } ] },
+              { "Label": "I'll take the extras off your hands.",
+                "Steps": [ { "Say": "A hero! Here, take a bag.$h", "Friendship": 5 } ] }
+            ] } }
+          ] }
+
+        ] }
+      ]
+    },
+
+    // ================= SPEND SOME TIME TOGETHER =================
+    {
+      "Id": "Caroline_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        { "Narrate": "Caroline pours you a cup. For a while you simply sit, steam curling between you." },
+        { "Pause": 800 },
+        { "Random": [
+          { "Weight": 3, "Conditions": "WEATHER Here Rain",
+            "Steps": [
+              { "Narrate": "Rain on the sunroom glass. Caroline reads one line from an old book aloud, then closes it, smiling." },
+              { "Emote": "Happy" },
+              { "Say": "That's enough for today. A page is plenty when the company is good.$h" }
+            ] },
+          { "Weight": 2, "Conditions": "TIME 1700 2600",
+            "Steps": [
+              { "Narrate": "The light turns amber. She hums something half-remembered, and you sit and listen." },
+              { "Say": "Funny. I couldn't tell you the name of that tune. It just lives in me.$h" }
+            ] },
+          { "Weight": 2,
+            "Steps": [
+              { "Narrate": "She shows you how to tell when the tea is ready by its colour alone." },
+              { "Say": "See? Patience has a colour. It's gold.$h" }
+            ] }
+        ] }
+      ]
+    },
+
+    // ================= REMEMBER WHEN... (unlocks as chapters are completed) =================
+    {
+      "Id": "Caroline_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Caroline",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        { "Id": "Caroline_Mem1", "Label": "Remember the old letter?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The letter. I keep it by my bed now, no longer hidden in a drawer. A small victory.$h" },
+        { "Id": "Caroline_Mem2", "Label": "Remember our walk?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "The river path in the golden light. I've been walking it every evening since. Thank you for reminding me that I could.$h" },
+        { "Id": "Caroline_Mem3", "Label": "Remember posting it?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "I think about that envelope every time the postman passes. Hope is an awfully loud thing for something so small.$h" }
+      ]
+    }
+  ]
+}

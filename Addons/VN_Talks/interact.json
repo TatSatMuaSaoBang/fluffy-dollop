@@ -1,0 +1,38 @@
+{
+  // VN Talks: the story add-on for Character Interact.
+  // This file lists which villager files to load, and sets the greeting that plays
+  // the first time you open any of these villagers' menu each day.
+  // Each villager has TWO files:  <Name>.json (chat + story chapters)  and  <Name>_Daily.json (everyday interactions).
+  "Npcs": [ "Robin", "Sam", "Caroline" ],
+
+  "Include": [
+    "Robin.json",    "Robin_Daily.json",
+    "Sam.json",      "Sam_Daily.json",
+    "Caroline.json", "Caroline_Daily.json"
+  ],
+
+  // GREETING: a short scene-setting line before the menu, once per day.
+  // It uses {{NpcName}}, so it works for any villager. Add a branch to add a new mood.
+  "Greeting": [
+    {
+      "Id": "Hello",
+      "Once": "Day",
+      "Random": [
+        { "Weight": 3, "Conditions": "PLAYER_HEARTS Current {{NpcName}} 6",
+          "Steps": [ { "Narrate": "{{NpcName}} breaks into a smile the moment they see you." } ] },
+        { "Weight": 3, "Conditions": "WEATHER Here Rain",
+          "Steps": [ { "Narrate": "Rain taps against the windows. {{NpcName}} glances up as you approach, a little damp at the edges." } ] },
+        { "Weight": 2, "Conditions": "WEATHER Here Snow",
+          "Steps": [ { "Narrate": "Snow muffles everything. {{NpcName}} turns toward you, cheeks pink from the cold." } ] },
+        { "Weight": 2, "Conditions": "TIME 600 1000",
+          "Steps": [ { "Narrate": "It's early. {{NpcName}} is still blinking the sleep out of their eyes." } ] },
+        { "Weight": 2, "Conditions": "TIME 1800 2600",
+          "Steps": [ { "Narrate": "The light is going gold. {{NpcName}} looks up, relaxed, as if the day has already loosened its grip." } ] },
+        { "Weight": 1,
+          "Steps": [ { "Narrate": "{{NpcName}} turns as you approach." } ] }
+      ]
+    }
+  ],
+
+  "Actions": []
+}

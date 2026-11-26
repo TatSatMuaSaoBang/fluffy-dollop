@@ -1,0 +1,220 @@
+{
+  // ROBIN, everyday interactions (the story chapters live in Robin.json).
+  // Menu order: chapter (5) > Talk about... (40) > Say something (45) > Time together (48) > Chat (50) > Remember when... (60)
+  "Npcs": [ "Robin" ],
+  "Actions": [
+
+    // ================= TALK ABOUT... (sub-menu of topics) =================
+    {
+      "Id": "Robin_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Robin",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+
+        // Her day: the answer depends on weather and time of day.
+        {
+          "Id": "Robin_Day",
+          "Label": "Ask about her day",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Random": [
+              { "Weight": 3, "Conditions": "WEATHER Here Rain",
+                "Steps": [ { "Say": "Rain on the shop roof is the best sound there is. Terrible for deliveries. Everything arrives damp.$h#$b#But the wood smells wonderful." } ] },
+              { "Weight": 2, "Conditions": "TIME 600 1200",
+                "Steps": [ { "Say": "Up before the sun, as usual. Coffee, sketches, and trying to ignore the pile of orders on the counter.$h" } ] },
+              { "Weight": 2, "Conditions": "TIME 1200 1800",
+                "Steps": [ { "Say": "I've been planing the same plank since lunch. It was crooked and now it's just thin.$u#$b#...Never mind. I'll call it a shelf." } ] },
+              { "Weight": 2, "Conditions": "TIME 1800 2600",
+                "Steps": [ { "Say": "Quiet evening. Demetrius is lost in his specimens, Maru is lost in her wires, and I'm lost in a blueprint.$h#$b#Everyone's happily lost. It works." } ] },
+              { "Weight": 1,
+                "Steps": [ { "Say": "Busy. Good busy, mostly. The kind where I can still hear myself think.$h" } ] }
+            ] }
+          ]
+        },
+
+        // Her craft: pick a question.
+        {
+          "Id": "Robin_Craft",
+          "Label": "Ask about carpentry",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "Carpentry? Oh, you asked for it.$h#$b#What do you want to know?" },
+            { "Ask": {
+              "Prompt": "Robin",
+              "Options": [
+                { "Label": "What's your favorite wood?",
+                  "Steps": [ { "Say": "Pine, if I'm honest. Everyone wants hardwood. Pine is forgiving, smells like a forest, and takes a stain like it wants to impress you.$h" } ] },
+                { "Label": "What's the hardest thing to build?",
+                  "Steps": [ { "Say": "Stairs. Everyone assumes roofs. But stairs have to feel right under a tired foot at midnight. That's math and kindness at once." } ] },
+                { "Label": "How did you start?",
+                  "Steps": [ { "Say": "A broken fence and a stubborn father who handed me the hammer instead of fixing it himself.$h#$b#I still hear him when I measure twice." } ] }
+              ]
+            } }
+          ]
+        },
+
+        // The people she knows.
+        {
+          "Id": "Robin_People",
+          "Label": "Ask about her family",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": { "Topics_{{NpcName}}": 1 },
+          "Steps": [
+            { "Say": "My family? That's a long conversation and a short answer: I'm lucky.$h" },
+            { "Ask": {
+              "Prompt": "Robin",
+              "Options": [
+                { "Label": "What's Demetrius like?",
+                  "Steps": [ { "Say": "He writes down when I laugh. Says it's data.$h#$b#I've never told him it's the nicest thing anyone's ever done for me." } ] },
+                { "Label": "How's Maru?",
+                  "Steps": [ { "Say": "Maru takes after her father, but she builds like me. Hand her a pile of wire and she'll give you a small miracle and a small fire.$h" } ] },
+                { "Label": "And Sebastian?",
+                  "Steps": [ { "Say": "Seb keeps his door closed. I keep my shop open. We've found a way to love each other across a hallway.$s#$b#It's getting easier.$h" } ] }
+              ]
+            } }
+          ]
+        },
+
+        // A deeper topic that unlocks with hearts and after a few other topics.
+        {
+          "Id": "Robin_Dreams",
+          "Label": "Ask about her dreams",
+          "Limit": "Ever",
+          "Conditions": "PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Topics_{{NpcName}} 3",
+          "Friendship": 30,
+          "Steps": [
+            { "Say": "A dream? Hm. Nobody asks me that. People ask what I can build.#$b#Do you want the real one?" },
+            { "Ask": {
+              "Prompt": "Robin",
+              "Options": [
+                { "Label": "Tell me.",
+                  "Steps": [ { "Say": "A small cabin, somewhere quiet, built only for me. Not for a customer. Not for the family. Just a place where I picked every board and no one needed to approve.$h#$b#Selfish, isn't it?" } ] },
+                { "Label": "I won't tell anyone.",
+                  "Steps": [ { "Say": "I know you won't. That's why I trust you with it.$h#$b#A cabin. Small. Mine." } ] }
+              ]
+            } },
+            { "Ask": {
+              "Prompt": "Robin",
+              "Options": [
+                { "Label": "It isn't selfish.",
+                  "Steps": [ { "Say": "...Thank you. I needed someone to say that out loud.$s" } ] },
+                { "Label": "Then build it.",
+                  "Steps": [ { "Say": "Build it. Just like that. Ha. You make it sound like cutting a plank.$h#$b#Maybe it is." } ] }
+              ]
+            } }
+          ]
+        }
+      ]
+    },
+
+    // ================= SAY SOMETHING (pick a tone, like a dating sim) =================
+    // Robin likes it when you are honest: honest 10, kind 5, playful 5.
+    {
+      "Id": "Robin_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        { "Random": [
+
+          { "Steps": [
+            { "Say": "Be straight with me. Does this shelf look crooked, or is it me?" },
+            { "Ask": { "Prompt": "Robin", "Options": [
+              { "Label": "It's perfect.",
+                "Steps": [ { "Say": "Mm. Sweet of you. But you looked at it for half a second.$u", "Friendship": 5 } ] },
+              { "Label": "The left side's a finger too low.",
+                "Steps": [ { "Say": "A finger! I knew it. Thank you for not lying to me.$h", "Friendship": 10 } ] },
+              { "Label": "It's a shelf with a story.",
+                "Steps": [ { "Say": "A story. Ha! That's what I'll tell customers.$h", "Friendship": 5 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "I've been thinking of closing the shop one afternoon a week. Is that irresponsible?" },
+            { "Ask": { "Prompt": "Robin", "Options": [
+              { "Label": "You deserve a day off.",
+                "Steps": [ { "Say": "Maybe I do. I'm not used to hearing it.$h", "Friendship": 5 } ] },
+              { "Label": "People depend on you, but you matter more.",
+                "Steps": [ { "Say": "Both things at once. I like that you didn't pick one.$h", "Friendship": 10 } ] },
+              { "Label": "Only if I pick the afternoon.",
+                "Steps": [ { "Say": "Ha! Fine. Tuesdays are slow anyway.$h", "Friendship": 5 } ] }
+            ] } }
+          ] },
+
+          { "Steps": [
+            { "Say": "Do you think anyone ever really finishes anything?" },
+            { "Ask": { "Prompt": "Robin", "Options": [
+              { "Label": "Of course. It feels great.",
+                "Steps": [ { "Say": "Easy for you to say. You have crops. Crops are done every season.$u", "Friendship": 5 } ] },
+              { "Label": "No. You just decide when to stop.",
+                "Steps": [ { "Say": "...That's the most useful thing anyone's said to me all week.$h", "Friendship": 10 } ] },
+              { "Label": "Only the lucky ones.",
+                "Steps": [ { "Say": "Then I'll keep sanding and hope for luck.$h", "Friendship": 5 } ] }
+            ] } }
+          ] }
+
+        ] }
+      ]
+    },
+
+    // ================= SPEND SOME TIME TOGETHER =================
+    {
+      "Id": "Robin_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        { "Narrate": "You pull up a stool and keep Robin company for a while." },
+        { "Pause": 800 },
+        { "Random": [
+          { "Weight": 3, "Conditions": "WEATHER Here Rain",
+            "Steps": [
+              { "Narrate": "Rain drums on the roof. Robin hands you a sanding block and neither of you says much." },
+              { "Emote": "Happy" },
+              { "Say": "Funny. It's never quiet when I'm alone. It's only quiet when you're here.$h" }
+            ] },
+          { "Weight": 2, "Conditions": "TIME 1700 2600",
+            "Steps": [
+              { "Narrate": "The shop lamps come on. Robin sketches while shadows stretch across the floor." },
+              { "Say": "Look at that light. I should paint it. I never paint, I only measure.$h" }
+            ] },
+          { "Weight": 2,
+            "Steps": [
+              { "Narrate": "She shows you how to hold a chisel. Your first cut is terrible. Hers is patient." },
+              { "Say": "Not bad for a first try, @. Terrible, but not bad.$h" }
+            ] }
+        ] }
+      ]
+    },
+
+    // ================= REMEMBER WHEN... (unlocks as chapters are completed) =================
+    {
+      "Id": "Robin_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Robin",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        { "Id": "Robin_Mem1", "Label": "Remember the chair?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The chair. It isn't only about the chair, is it? It's about the hour you held the arm for me.$h" },
+        { "Id": "Robin_Mem2", "Label": "Remember the plans?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "I keep that drawing in the drawer by the pencils. The porch is wide in it now. I check on it like a sleeping child.$h" },
+        { "Id": "Robin_Mem3", "Label": "Remember the first board?", "Limit": "Day", "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "I'm sanding that porch rail in my head every time I close my eyes. Good problem to have.$h" }
+      ]
+    }
+  ]
+}
