@@ -1,0 +1,260 @@
+{
+  "Npcs": [
+    "Shane"
+  ],
+  "Actions": [
+    {
+      "Id": "Shane_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": {
+        "Talks_{{NpcName}}": 1
+      },
+      "Say": [
+        "The blue chickens have started following me around the yard. I pretend I'm annoyed, but I keep slowing down for them.",
+        "Marnie says the coop latch needs fixing. I said I'd do it yesterday. The latch is still winning.",
+        "Joja coffee tastes like burnt cardboard. I know because I've had enough of it to identify the cardboard.",
+        "Jas asked whether chickens dream. I told her probably about worms. She said that sounded lonely, so now I'm reconsidering.",
+        "I used to think a quiet morning meant something was wrong. Turns out it can just mean nobody needs anything yet.",
+        "The saloon was loud last night. I stayed for one drink, then went home before I found a reason to stay too long.",
+        "There's a little patch behind the coop where the grass grows unevenly. The chickens like it. I'm leaving it alone.",
+        "People keep asking whether I'm doing better. I never know what answer they want, so I ask how their day is instead.",
+        "I bought a new pair of boots. They squeak. Marnie says they'll stop. I'm starting to think she enjoys the squeaking.",
+        "Charlie pecked my sleeve this morning and then followed me for twenty minutes. Apparently I'm her chosen idiot.",
+        "Some days the whole valley feels like it knows my business. Other days it doesn't even notice if I skip breakfast.",
+        "I've been trying to cook more. The first omelette stuck to the pan so badly I nearly had to sell the pan.",
+        "Jas is learning to whistle. She's terrible at it. I told her that means she's practising properly.",
+        "There's a difference between being alone and being left alone. I didn't understand that until recently.",
+        "Your farm smells like wet soil after rain. That's a compliment. Don't make me say it twice.",
+        "I found an old Joja badge in a drawer. Didn't throw it away. Didn't keep it on purpose, either.",
+        "Marnie keeps leaving the good feed near the door so I don't have to ask. She thinks I haven't noticed.",
+        "The chickens know the sound of the feed tin. Half the time they hear it before I even pick it up.",
+        "I don't mind people dropping by when they give me a warning. A knock is nice. A surprise is a whole different event.",
+        "I've been sleeping better. Not every night. Don't go making a parade out of it.",
+        "There's a song on the radio that makes me think of the road out of town. I still haven't decided whether that's good.",
+        "Jas drew me as a chicken. Apparently my hair looks like feathers. I put it on the fridge.",
+        "I don't have much advice about starting over. I can tell you where the spare nails are, though.",
+        "The best part of fixing the coop was hearing the door close properly. A small sound. A satisfying one.",
+        "I made enough soup for three people. Marnie took a jar, Jas took a bowl, and I didn't have to eat it all week."
+      ]
+    },
+    {
+      "Id": "Shane_Ch1",
+      "Label": "A latch that won't stay shut",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "The coop door keeps swinging open in the breeze. Shane has one hand on the latch and a screwdriver tucked behind her ear."
+        },
+        {
+          "Say": "I know. I know. It's a simple fix. I've fixed worse things with less equipment and considerably more swearing."
+        },
+        {
+          "Say": "Except this one keeps catching. You pull it shut, it looks fine, then the wind comes along and makes a fool of it."
+        },
+        {
+          "Say": "Marnie said she'd ask Robin. I told her I could manage. Now the chickens are having a committee meeting outside."
+        },
+        {
+          "Say": "I don't want the whole ranch rearranged every time something small breaks. I can do one thing without making it everyone's problem."
+        },
+        {
+          "Say": "Could you hold the door while I try it again? Not because I can't. Because the hinge is awkward. That's different."
+        },
+        {
+          "Ask": {
+            "Prompt": "Shane",
+            "Options": [
+              {
+                "Label": "Line the hinge up and try once more.",
+                "Steps": [
+                  {
+                    "Say": "Right. Hold it there. No, a little higher. There. ...Oh. That's actually it. Don't look so pleased.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Ask Robin for a second opinion.",
+                "Steps": [
+                  {
+                    "Say": "I hate that that's sensible. Fine. I'll ask her. You can tell her I said please, if you want to make it worse.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Let the chickens inspect it.",
+                "Steps": [
+                  {
+                    "Say": "Absolutely not. They're already convinced they're in charge. I don't need them signing off on repairs.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch1_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Shane_Letter1 Tomorrow"
+          ],
+          "Say": "There. It shuts. The chickens are offended, naturally. Thanks for staying while I made a five-minute job last half an hour."
+        }
+      ]
+    },
+    {
+      "Id": "Shane_Ch2",
+      "Label": "A morning without the saloon",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "Shane is sitting on an overturned feed bucket. A thermos rests beside her, still warm."
+        },
+        {
+          "Say": "I brought coffee from home. It's not good coffee, but it's mine. That's apparently enough to make me protective of it."
+        },
+        {
+          "Say": "I used to go to the saloon because I didn't want to hear my own house being quiet. Then I stayed because leaving felt harder."
+        },
+        {
+          "Say": "I'm not telling you I've got everything sorted. I'm telling you I made a different choice yesterday, and I remembered it this morning."
+        },
+        {
+          "Say": "Marnie didn't ask where I'd been. She just put a plate in the oven. I nearly made a joke about it, then didn't."
+        },
+        {
+          "Say": "There's a chair by the window at the ranch. I might sit there after work. Sounds boring. I think I want boring."
+        },
+        {
+          "Ask": {
+            "Prompt": "Shane",
+            "Options": [
+              {
+                "Label": "Boring can be a good thing.",
+                "Steps": [
+                  {
+                    "Say": "Yeah. A chair, a cup of coffee, nobody expecting me to turn into a better person before supper. I could get used to that.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "You don't have to explain your choices to me.",
+                "Steps": [
+                  {
+                    "Say": "Good. Because I don't have a speech prepared. I barely have a sentence. But thanks.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Want company on the quiet days?",
+                "Steps": [
+                  {
+                    "Say": "Maybe. Don't show up with a marching band. Just... knock. I'll see how I feel.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch2_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Shane_Letter2 Tomorrow"
+          ],
+          "Say": "I'll keep the thermos. Tomorrow too, probably. It's odd having a plan that only requires remembering to wash a mug."
+        }
+      ]
+    },
+    {
+      "Id": "Shane_Ch3",
+      "Label": "The coop at sunrise",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "The first light touches the blue coop. Shane is standing outside with a small paper bag, watching the chickens wake."
+        },
+        {
+          "Say": "I used to think a good day had to be earned by doing something impressive. The chickens have never heard of that rule."
+        },
+        {
+          "Say": "They want feed, clean water, and a door that shuts. They don't care if I've had a clever thought or fixed my whole life."
+        },
+        {
+          "Say": "Jas helped me paint a little sign. It says 'Blue Coop'. She wanted 'The Very Famous Blue Chicken Hotel'. We compromised."
+        },
+        {
+          "Say": "I've started leaving the door open while I work nearby. They wander out, scratch around, and come back when they feel like it."
+        },
+        {
+          "Say": "That sounds simple when I say it. I suppose it is. I didn't say it was easy."
+        },
+        {
+          "Ask": {
+            "Prompt": "Shane",
+            "Options": [
+              {
+                "Label": "The Very Famous Blue Chicken Hotel.",
+                "Steps": [
+                  {
+                    "Say": "You are not helping. ...Actually, Jas would love that. Fine. I'll let her paint it. I refuse to be responsible for the spelling.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Just Blue Coop. It's honest.",
+                "Steps": [
+                  {
+                    "Say": "Yeah. It's ours. It doesn't need to sound important.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Leave it blank and let the chickens decide.",
+                "Steps": [
+                  {
+                    "Say": "They'd scratch a hole in it. Then we'd have a sign that says nothing. Very official.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch3_{{NpcName}}"
+          ],
+          "Friendship": 100,
+          "Reward": {
+            "Items": [
+              {
+                "Id": "(O)276",
+                "Count": 12
+              }
+            ]
+          },
+          "Say": "Take the extra eggs. They're not payment. I just have more than I can use, and I know you won't let them go to waste."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "Npcs": [
+    "Alex"
+  ],
+  "Actions": [
+    {
+      "Id": "Alex_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": {
+        "Talks_{{NpcName}}": 1
+      },
+      "Say": [
+        "Grandma says my posture is terrible. I told her I'm a professional athlete. She said that explains it.",
+        "George has been sitting outside more often. He says the sun is good for his joints. I think he likes watching the birds.",
+        "I ran the long way around the river this morning. Came back tired and in a better mood. Annoying how that works.",
+        "People hear I play gridball and decide they know my whole personality. I let them. It's easier than correcting everybody.",
+        "I used to think I had to win every time. Now I just want to play a game where nobody gets hurt and the grass is dry.",
+        "Sam has been writing new songs. She says I should be in the music video. I said only if I get a stunt double.",
+        "I keep a football under the bed. It doesn't fit. I keep it there anyway.",
+        "Grandma made cookies for the whole town. George claimed he didn't want one. I saw him take three.",
+        "The beach is good for running when the sand is firm. When it's soft, it's good for regretting your choices.",
+        "I've been trying to read more. The first page is easy. The second page is where my brain goes looking for a ball.",
+        "Leah says my sketches look like somebody kicked a notebook down the stairs. I said that's movement.",
+        "Sometimes I miss being a kid who could play all afternoon and not think about what came next.",
+        "I don't like talking about my parents. I don't mind talking about Grandma. That's probably not the same thing.",
+        "Vincent wants me to teach him a trick with the ball. I told him to start with catching it. He said that's boring.",
+        "There's a bench by the ice cream stand where you can see the whole beach. I sit there after practice sometimes.",
+        "I bought new shoes. They look fast. I haven't tested them yet because I'm worried they'll be faster than me.",
+        "George called me by my dad's name this morning. He apologized. I told him it was fine. It was, mostly.",
+        "I like helping with the farm chores. It's exercise, but nobody asks me to keep score.",
+        "Caroline says I was always loud as a child. I said I was enthusiastic. She said those aren't mutually exclusive.",
+        "There's a town game coming up. I might enter. Not for the prize. I like having something to train for.",
+        "I've been keeping a notebook of plays. Most of them are terrible. I draw them anyway.",
+        "Some people think being strong means never asking for help. That's a very inconvenient definition.",
+        "Sam says I should learn to play guitar. I said my fingers are already busy. She said that's not how fingers work.",
+        "The farm dog has learned to bring me a stick. I throw it. The dog wins. We have an understanding.",
+        "I like when somebody watches a game without shouting advice. It makes the whole field feel bigger."
+      ]
+    },
+    {
+      "Id": "Alex_Ch1",
+      "Label": "A ball on the beach",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "Alex is standing near the tide line with a scuffed football tucked under one arm. She nudges it back with her foot when it rolls away."
+        },
+        {
+          "Say": "I come here when the field gets too crowded. The beach doesn't care how many goals you scored last week."
+        },
+        {
+          "Say": "I used to practise until my legs gave out. My grandmother would call me in and I'd pretend I couldn't hear her."
+        },
+        {
+          "Say": "Now I can hear her. I just don't always know when to stop. That's an improvement, apparently."
+        },
+        {
+          "Say": "I've been thinking about entering the spring tournament. Not because I expect to win. I want to see what I can do without making it my whole life."
+        },
+        {
+          "Say": "Would you help me practise? I need somebody who won't cheer every time I manage to kick the ball straight."
+        },
+        {
+          "Ask": {
+            "Prompt": "Alex",
+            "Options": [
+              {
+                "Label": "Start with passing. No scoring.",
+                "Steps": [
+                  {
+                    "Say": "Passing. Right. We can do that. It sounds boring, which probably means it's useful.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Try a full match and see what happens.",
+                "Steps": [
+                  {
+                    "Say": "You want to get tackled in the sand? Fine. But I'm blaming you when we both get sand in our shoes.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Take a break and talk first.",
+                "Steps": [
+                  {
+                    "Say": "That's... actually nice. I thought you'd tell me to run laps. We can sit for a minute.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch1_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Alex_Letter1 Tomorrow"
+          ],
+          "Say": "That was good. Not the practice. The part where nobody needed me to be the best one on the beach."
+        }
+      ]
+    },
+    {
+      "Id": "Alex_Ch2",
+      "Label": "The old photograph",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "Alex has a photograph balanced on her knee at the porch steps. Evelyn's handwriting is visible on the back."
+        },
+        {
+          "Say": "This is my parents. I don't show it much. People look at it and start asking questions, and then I have to decide how much truth fits in a conversation."
+        },
+        {
+          "Say": "Grandma keeps it in the family album. I took it out because I wanted to remember the day, not the way everything ended."
+        },
+        {
+          "Say": "I was little. I remember the picnic blanket, the red cooler, and my dad trying to catch a ball with one hand while holding a plate."
+        },
+        {
+          "Say": "George doesn't talk about them much. Sometimes he starts, then stops. I don't push. I know what that feels like."
+        },
+        {
+          "Say": "I thought maybe I could put the photograph somewhere I can see it without having to explain it."
+        },
+        {
+          "Ask": {
+            "Prompt": "Alex",
+            "Options": [
+              {
+                "Label": "By the window, where the light reaches it.",
+                "Steps": [
+                  {
+                    "Say": "Yeah. Somewhere ordinary. Not hidden in a box, not displayed like an announcement.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Keep it in the album until you're ready.",
+                "Steps": [
+                  {
+                    "Say": "That's fair. I don't have to decide today. I can put it back and still have looked at it.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Ask Evelyn where she'd like it.",
+                "Steps": [
+                  {
+                    "Say": "She'll say wherever I want. Then she'll bring out the good frame. I know her.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch2_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Alex_Letter2 Tomorrow"
+          ],
+          "Say": "Thanks. I didn't need you to say anything about them. I just needed somebody to look at the picture with me."
+        }
+      ]
+    },
+    {
+      "Id": "Alex_Ch3",
+      "Label": "A game without a score",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "The field is empty. Alex has set two water bottles by the fence and drawn a line in the dirt with her shoe."
+        },
+        {
+          "Say": "I asked a few people to come practise. Then I changed my mind. Too many opinions, too many people keeping score."
+        },
+        {
+          "Say": "I want to play for an hour and stop when I'm tired. Not when somebody says I should be better."
+        },
+        {
+          "Say": "That sounds like a small thing. It isn't, for me. I have a habit of turning every good day into a test."
+        },
+        {
+          "Say": "Grandma said I should learn to enjoy the game again. She says it while handing me a sandwich, so I can't argue."
+        },
+        {
+          "Say": "I want to try it today. Just pass the ball, miss a few, laugh, and go home."
+        },
+        {
+          "Ask": {
+            "Prompt": "Alex",
+            "Options": [
+              {
+                "Label": "Pass until the sun goes down.",
+                "Steps": [
+                  {
+                    "Say": "Okay. But if I start counting, call me out. I want this to be a game, not a spreadsheet.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Make up ridiculous rules.",
+                "Steps": [
+                  {
+                    "Say": "Now we're talking. Three points for a backwards kick? Five for hitting the fence? This is going to be terrible.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Sit here and watch the clouds.",
+                "Steps": [
+                  {
+                    "Say": "That's not football. ...Maybe that's the point. I can do that for a while.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch3_{{NpcName}}"
+          ],
+          "Friendship": 100,
+          "Reward": {
+            "Items": [
+              {
+                "Id": "(O)388",
+                "Count": 5
+              }
+            ]
+          },
+          "Say": "I forgot what time it was. That's probably the best practice I've had in months."
+        }
+      ]
+    }
+  ]
+}

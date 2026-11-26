@@ -1,0 +1,260 @@
+{
+  "Npcs": [
+    "Sebastian"
+  ],
+  "Actions": [
+    {
+      "Id": "Sebastian_Chat",
+      "Label": "Have a proper chat",
+      "Order": 50,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Limit": "Day",
+      "Friendship": 10,
+      "AddCounters": {
+        "Talks_{{NpcName}}": 1
+      },
+      "Say": [
+        "Rain makes the basement window look like an aquarium. I can sit there for an hour and pretend the world is somewhere else.",
+        "Sam sent me a voice memo of a song idea. It was mostly traffic noise and one very confident wrong note.",
+        "Robin asked if I wanted to help with a shelf. I said maybe. She put the wood aside anyway.",
+        "I like the quiet hours in the morning, before the town starts deciding what it needs from everybody.",
+        "Someone left a tiny plastic frog on my desk. I know it was Sam. I haven't moved it.",
+        "Programming is mostly being wrong in increasingly specific ways until the machine agrees to stop complaining.",
+        "I've been riding out to the lake at night. Not to think. Just to hear something that isn't a fan spinning.",
+        "Maru says I should open the curtains more often. I told her the curtains have done nothing to deserve that.",
+        "I started a new game. It has six endings and none of them involve paying rent. Excellent design.",
+        "Alex asked if I wanted to join a game outside. I said no, then spent the afternoon watching from the porch.",
+        "I don't hate family dinners. I hate being asked what I'm doing with my life between the potatoes and dessert.",
+        "Sam has a talent for turning a normal afternoon into a story that takes three days to explain.",
+        "I keep a list of things I might build. Most are apps. One is a very bad idea for a weather machine.",
+        "The old motorcycle needs work. I know. I can hear the chain complaining from the shed.",
+        "Leah brought a carving over to show Robin. I liked it more than I expected. Didn't say that quickly enough.",
+        "I found a folder of old code. Half of it is useless. The other half is somehow worse.",
+        "I don't mind being alone. I mind when people decide that being alone means I'm waiting to be rescued.",
+        "There's a town event next week. I might go. Don't make it weird if you see me there.",
+        "Sam says I'm the only person who can make a compliment sound like a bug report. She's probably right.",
+        "The basement gets cold in winter. I keep a blanket behind the chair. No, you can't have it. ...Fine, maybe.",
+        "I've been taking more walks. I don't tell anybody where I'm going because I don't always know until I get there.",
+        "Robin's been talking about Leah's cottage. She sounds less tense when she says the word 'home'.",
+        "I like the sound of the arcade when nobody is playing. Machines humming, lights clicking. It's almost peaceful.",
+        "Some people write in journals. I save screenshots. Same idea, less handwriting.",
+        "You're easier to talk to than most people. Don't look pleased. It's a very small compliment."
+      ]
+    },
+    {
+      "Id": "Sebastian_Ch1",
+      "Label": "A window left open",
+      "Order": 5,
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 2, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 2, !Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "A folded note is tucked beneath the keyboard in Sebastian's basement room. She taps it once, then turns the screen off."
+        },
+        {
+          "Say": "I wrote this last night. Not code. Actual sentences. Don't make a face."
+        },
+        {
+          "Say": "It's about the house. Not one thing, exactly. Just how everybody seems to have a place and a reason to be in it."
+        },
+        {
+          "Say": "Robin's in the shop, Maru has her projects, Demetrius has a paper for everything. I have the basement and a window that sticks."
+        },
+        {
+          "Say": "I don't want somebody to tell me I should be grateful. I am. I also want a room that doesn't feel like the spare part of a family."
+        },
+        {
+          "Say": "Can you read it? Not for grammar. I know the grammar is bad. Just tell me whether it sounds like me."
+        },
+        {
+          "Ask": {
+            "Prompt": "Sebastian",
+            "Options": [
+              {
+                "Label": "It sounds honest. Keep it.",
+                "Steps": [
+                  {
+                    "Say": "Honest is good. I can work with honest. Maybe I'll leave the note where I can find it instead of deleting it.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Write what you wish you could say to them.",
+                "Steps": [
+                  {
+                    "Say": "That's the problem. I can write it. Saying it while someone's looking at me is a separate skill.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "You deserve a space of your own.",
+                "Steps": [
+                  {
+                    "Say": "Yeah. I think I want to believe that without having to argue for it first.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch1_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Sebastian_Letter1 Tomorrow"
+          ],
+          "Say": "I'm going to keep the note. That's all for today. And don't tell Sam I wrote something sincere. She'll make it a song."
+        }
+      ]
+    },
+    {
+      "Id": "Sebastian_Ch2",
+      "Label": "A ride past the lights",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 4, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 6, !Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "Sebastian is checking the motorcycle chain outside. A helmet rests on the seat beside a second one."
+        },
+        {
+          "Say": "I was going to ride to the beach. Then I thought it might be better not to go alone. Don't read into the second helmet."
+        },
+        {
+          "Say": "The road is different at night. You see the windows lit up and imagine what everybody's doing. Most of the time it's probably dishes."
+        },
+        {
+          "Say": "I keep thinking about leaving. Not because I hate this place. Because I want to know whether I could choose somewhere else and still come back."
+        },
+        {
+          "Say": "Sam says the city would suit me. She also says every city has a pizza place and I should choose based on that."
+        },
+        {
+          "Say": "I don't want to make a dramatic exit. I just want to take a road because I decided to."
+        },
+        {
+          "Ask": {
+            "Prompt": "Sebastian",
+            "Options": [
+              {
+                "Label": "The beach. No plan beyond that.",
+                "Steps": [
+                  {
+                    "Say": "Good. We can turn around whenever. I like a trip with an exit that doesn't need explaining.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Ride through town first.",
+                "Steps": [
+                  {
+                    "Say": "All right. Past the saloon, the bridge, the dark windows. I want to see the place without having to talk about it.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Stay here and fix the chain.",
+                "Steps": [
+                  {
+                    "Say": "Practical. Annoyingly practical. ...Fine. Help me hold the wheel steady.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch2_{{NpcName}}"
+          ],
+          "Friendship": 50,
+          "TriggerActions": [
+            "AddMail Current VNTalks_Sebastian_Letter2 Tomorrow"
+          ],
+          "Say": "Thanks. I didn't need an audience. Just somebody who wouldn't turn a ride into a referendum on my future."
+        }
+      ]
+    },
+    {
+      "Id": "Sebastian_Ch3",
+      "Label": "The room with two windows",
+      "Order": 5,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}, PLAYER_HEARTS Current {{NpcName}} 6, Fouky.CharacterInteract_COUNTER Talks_{{NpcName}} 10, !Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+      "Steps": [
+        {
+          "Narrate": "A sketch lies on the table. It shows a small room with two windows, shelves, and a desk facing the trees."
+        },
+        {
+          "Say": "I drew this after the ride. Not a house. Not a whole new life. Just a room where the light comes in from both sides."
+        },
+        {
+          "Say": "I've been saving money. Not enough yet, but enough to stop pretending it's only an idea."
+        },
+        {
+          "Say": "Robin offered to look at the measurements. Leah said she'd help me find a chair. Sam already named the room something ridiculous."
+        },
+        {
+          "Say": "Maybe I stay here another year. Maybe I go. I don't think the answer has to be decided by how annoyed I am on a Tuesday."
+        },
+        {
+          "Say": "I wanted you to see it because you're part of the reason I stopped treating the future like a thing that happens to other people."
+        },
+        {
+          "Ask": {
+            "Prompt": "Sebastian",
+            "Options": [
+              {
+                "Label": "It looks like somewhere you'd want to be.",
+                "Steps": [
+                  {
+                    "Say": "That's the point. I want to walk into a room and not feel like I'm borrowing it.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Build it here, then decide later.",
+                "Steps": [
+                  {
+                    "Say": "I like that. Build first. The road can wait until I know what I'm carrying.",
+                    "Friendship": 20
+                  }
+                ]
+              },
+              {
+                "Label": "Take the sketch with you wherever you go.",
+                "Steps": [
+                  {
+                    "Say": "Yeah. I'll fold it carefully. Probably put it in the same drawer as the note. That's a pattern, I guess.",
+                    "Friendship": 20
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "SetFlags": [
+            "Ch3_{{NpcName}}"
+          ],
+          "Friendship": 100,
+          "Reward": {
+            "Items": [
+              {
+                "Id": "(O)66",
+                "Count": 1
+              }
+            ]
+          },
+          "Say": "Keep the other copy. If I lose mine, I know who to ask. It's not sentimental. It's document redundancy."
+        }
+      ]
+    }
+  ]
+}
