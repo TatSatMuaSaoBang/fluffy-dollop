@@ -1,0 +1,542 @@
+{
+  "Npcs": [
+    "Sebastian"
+  ],
+  "Actions": [
+    {
+      "Id": "Sebastian_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Sebastian",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+        {
+          "Id": "Sebastian_Topic1",
+          "Label": "Ask about programming",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The last bug was caused by a missing bracket. I spent two hours blaming the network. The bracket was sitting there the whole time."
+            },
+            {
+              "Say": "I like problems that have a reason. People are harder. No error message, no stack trace, and somehow the same issue returns."
+            },
+            {
+              "Say": "Maru asked if I could build a program for her experiments. I said yes. I haven't told her I already started."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic2",
+          "Label": "Ask about Sam's band",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Sam keeps sending me recordings at impossible hours. I listen to them all. The bad ones too."
+            },
+            {
+              "Say": "She thinks the bridge needs a bigger sound. I think it needs less sound. We argue, then she plays it again and I change my mind."
+            },
+            {
+              "Say": "If the band ever gets famous, I'm charging them for technical support."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic3",
+          "Label": "Ask about the motorcycle",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The chain needs cleaning. The brakes need checking. The seat needs replacing. It's less a motorcycle and more a collection of promises."
+            },
+            {
+              "Say": "I like fixing it because the problem stays where you put it. You can take a wrench to it and the bolt doesn't ask how you feel."
+            },
+            {
+              "Say": "I'll take it out when I'm ready. Not when somebody asks whether I've taken it out."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic4",
+          "Label": "Ask about the basement",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The basement is cool in summer and freezing in winter. The window sticks halfway open. That's the whole review."
+            },
+            {
+              "Say": "I put a lamp behind the monitor so the room doesn't feel like a cave. It still feels like a cave, but a cave with better lighting."
+            },
+            {
+              "Say": "I know where everything is. That's worth something."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic5",
+          "Label": "Ask about Robin",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "She notices when the house needs something before anybody else does. Then she fixes it and acts surprised when people thank her."
+            },
+            {
+              "Say": "She's been spending more time with Leah. I think they're good for each other. Robin comes back with sawdust on her sleeves and a different sort of quiet."
+            },
+            {
+              "Say": "I don't know what will happen with the house. I hope she gets to choose what happens next."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic6",
+          "Label": "Ask about Maru",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Maru can build something out of a broken toaster and a paperclip. I can build something out of a broken toaster and a better toaster."
+            },
+            {
+              "Say": "She's my sister. I know how that sounds when I say it like a complaint. It isn't one."
+            },
+            {
+              "Say": "She keeps asking me to test her inventions. I keep saying yes. That's probably our family language."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic7",
+          "Label": "Ask about the city",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I miss the noise sometimes. Not the traffic. The feeling that nobody knows you and nobody expects you to explain yourself."
+            },
+            {
+              "Say": "The city has a thousand places to sit alone. Here there are three, and someone will ask if you're waiting for a friend."
+            },
+            {
+              "Say": "I'd like to visit without making it a life decision. That might be the trick."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic8",
+          "Label": "Ask about games",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I like games that let you fail quietly and try again. No audience, no score that matters outside the screen."
+            },
+            {
+              "Say": "Sam plays the loud ones. She narrates every move like she's being paid. She's not."
+            },
+            {
+              "Say": "I started making a small game about a person who keeps missing the bus. It might be a metaphor. I haven't decided."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic9",
+          "Label": "Ask about the weather",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Rain is good for thinking. Thunder is good for pretending you weren't thinking about anything at all."
+            },
+            {
+              "Say": "The basement window fogs up in winter. I draw little squares in it. Very mature."
+            },
+            {
+              "Say": "When it's sunny I feel obligated to go outside. That's probably why I prefer overcast days."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic10",
+          "Label": "Ask about friends",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I have friends. I know that's surprising to people who think quiet means unfriendly."
+            },
+            {
+              "Say": "Sam is loud enough for both of us. Alex can fill a silence with a sports fact. Leah doesn't make silence feel awkward."
+            },
+            {
+              "Say": "You can be in a room with people and still have your own thoughts. That's my favourite kind of company."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic11",
+          "Label": "Ask about leaving",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I don't want to leave because of one argument or one bad week. That's not a decision. That's a reaction."
+            },
+            {
+              "Say": "I want to know what I would choose if I wasn't trying to prove anything to anybody."
+            },
+            {
+              "Say": "For now, I'm keeping the sketch. That's a small step. It's still a step."
+            }
+          ]
+        },
+        {
+          "Id": "Sebastian_Topic12",
+          "Label": "Ask about the farm",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Your farm is weirdly peaceful. There are animals everywhere and somehow I can hear the wind."
+            },
+            {
+              "Say": "I helped you move a machine once. I didn't know what it did. I just liked that it had a clear purpose."
+            },
+            {
+              "Say": "You make a lot of noise for someone who seems to like quiet. I mean that as a compliment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Sebastian_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        {
+          "Random": [
+            {
+              "Steps": [
+                {
+                  "Say": "Sam wants me to play a song at the saloon. I said I would think about it. She heard that as a yes."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Sebastian",
+                    "Options": [
+                      {
+                        "Label": "You can tell her you're not ready.",
+                        "Steps": [
+                          {
+                            "Say": "I know. She'll make a face, then she'll understand. Probably after three more messages.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Try one song, then leave if you want.",
+                        "Steps": [
+                          {
+                            "Say": "One song is manageable. I'll ask Gus where the least visible corner is.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Let her have this one. She's excited.",
+                        "Steps": [
+                          {
+                            "Say": "She's excited because she thinks I can do it. That's... not a bad reason to try.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "Robin asked me to look at a room plan. I said the measurements were wrong. She said she'd fix them. I should've been nicer."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Sebastian",
+                    "Options": [
+                      {
+                        "Label": "Offer to help with the next draft.",
+                        "Steps": [
+                          {
+                            "Say": "I can do that. She'll pretend she didn't need help. I'll pretend I believe her.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "You were honest. That's useful to her.",
+                        "Steps": [
+                          {
+                            "Say": "Maybe. I can still tell her the plan is good before I start listing problems.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Bring her a coffee next time.",
+                        "Steps": [
+                          {
+                            "Say": "That might work. She likes coffee. Everybody in this family likes coffee except Demetrius.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "Someone asked whether I'm lonely. I said no too quickly. Now I keep thinking about the question."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Sebastian",
+                    "Options": [
+                      {
+                        "Label": "You don't owe them an answer.",
+                        "Steps": [
+                          {
+                            "Say": "Good. I don't want to turn every quiet day into a public report.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Maybe the honest answer changes day to day.",
+                        "Steps": [
+                          {
+                            "Say": "Yeah. Some days I want company. Some days I want the door closed. Both are true.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Would you like company now?",
+                        "Steps": [
+                          {
+                            "Say": "Maybe for a little while. You can sit there. You don't have to entertain me.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "I found an old photo of the family. Everybody's looking at a different camera."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Sebastian",
+                    "Options": [
+                      {
+                        "Label": "Keep it. It's funny.",
+                        "Steps": [
+                          {
+                            "Say": "It's very funny. Nobody coordinated. Somehow that's what makes it look like us.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Ask Robin if she remembers the day.",
+                        "Steps": [
+                          {
+                            "Say": "She probably does. She remembers where everyone stood and what the weather was.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Put it by the window.",
+                        "Steps": [
+                          {
+                            "Say": "Maybe. Not on the desk. I don't need a family staring contest while I'm working.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Sebastian_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        {
+          "Narrate": "You find a quiet place with Sebastian. Nobody is in a hurry to leave."
+        },
+        {
+          "Pause": 800
+        },
+        {
+          "Random": [
+            {
+              "Weight": 3,
+              "Steps": [
+                {
+                  "Narrate": "You sit beside the basement window while rain runs down the glass. Sebastian has a terminal open but isn't typing."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "I know. I'm not working. It's allowed. Don't tell anyone I said that."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "The two of you check the motorcycle. She passes you a wrench without looking away from the chain."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "Hold that. No, the other end. ...Thanks. You have the right amount of patience for a machine that refuses to cooperate."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "You walk the forest path after dark. Sebastian points out the lights in the distant farmhouse windows."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "That's Robin's. Or Leah's. I can never tell from here. It's nice knowing somebody's awake."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "Sam's recording plays softly from a phone. Sebastian doesn't comment until the final note fades."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "That last chord works. Don't tell her I said that. Actually, tell her. She'll be unbearable for a week."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Sebastian_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Sebastian",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        {
+          "Id": "Sebastian_Memory1",
+          "Label": "Remember the first visit?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The note is still in the drawer. I didn't delete it. That's more progress than it sounds like."
+        },
+        {
+          "Id": "Sebastian_Memory2",
+          "Label": "Remember what we decided?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "I still have the second helmet. It isn't collecting dust anymore. Don't ask when I'm riding next."
+        },
+        {
+          "Id": "Sebastian_Memory3",
+          "Label": "Remember that afternoon?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "The room sketch has measurements on the back now. It looks less like a wish and more like a plan."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+{
+  "Npcs": [
+    "Alex"
+  ],
+  "Actions": [
+    {
+      "Id": "Alex_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Alex",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+        {
+          "Id": "Alex_Topic1",
+          "Label": "Ask about gridball",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The trick is to keep your feet under you. People talk about speed, but balance gets you through the rough parts."
+            },
+            {
+              "Say": "I watch old matches and pause them to study the footwork. Grandma says I should watch films for the story. I do both."
+            },
+            {
+              "Say": "I'm not trying to go pro tomorrow. I want to keep loving the game long enough to find out what happens."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic2",
+          "Label": "Ask about Evelyn",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Grandma remembers everybody's favourite meal. She'll ask a question about your day while she's already putting a plate in front of you."
+            },
+            {
+              "Say": "She says she never worries. Then she checks the oven three times and asks if I've eaten. That's worrying with a casserole."
+            },
+            {
+              "Say": "I want to be around more. Not because she needs looking after every minute. Because I like being there."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic3",
+          "Label": "Ask about George",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "George knows the birds by sound. I know the local teams by their uniforms. We both think the other person's hobby is strange."
+            },
+            {
+              "Say": "He can be stubborn. I can be stubborn. We have very efficient arguments about the porch steps."
+            },
+            {
+              "Say": "Sometimes we watch a match together. He pretends he isn't interested, then asks why the referee missed a call."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic4",
+          "Label": "Ask about the beach",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The beach changes every hour. Sand moves, footprints disappear, and somebody always leaves a towel behind."
+            },
+            {
+              "Say": "I run here when I need a straight path. No fences, no cones, no coach shouting from the side."
+            },
+            {
+              "Say": "The best time is after the tourists leave and before the light goes. The waves do most of the talking."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic5",
+          "Label": "Ask about Sam",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Sam writes songs about tiny things and somehow makes them sound important. She says that's the secret. I think she's right."
+            },
+            {
+              "Say": "She once wrote a chorus about a missing sock. I still remember it. I wish I didn't."
+            },
+            {
+              "Say": "I like listening to her practise. She gets frustrated, then laughs at herself, then tries again."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic6",
+          "Label": "Ask about Vincent",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Vincent wants to be taller than me. He's measuring himself against the doorframe every week."
+            },
+            {
+              "Say": "I teach him to catch the ball with both hands. He tries one-handed because he saw it in a film."
+            },
+            {
+              "Say": "He's got more confidence than I did at his age. I hope nobody talks him out of it."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic7",
+          "Label": "Ask about clothing",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I buy clothes that let me move. If it looks good too, that's a bonus."
+            },
+            {
+              "Say": "Leah offered to mend my jacket. She made it look better than new. I said thank you, then wore it to practice."
+            },
+            {
+              "Say": "Grandma says I should own a nice shirt for special occasions. I own one. It is very nice."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic8",
+          "Label": "Ask about reading",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I like sports biographies. You get the whole story, including the years where nothing worked."
+            },
+            {
+              "Say": "Caroline gave me a book about gardens. I tried to read it. Now I know three facts about compost."
+            },
+            {
+              "Say": "I read slower than I run. That's fine. Nobody's timing me."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic9",
+          "Label": "Ask about the farm",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I can help move hay bales. It's a good workout and the animals don't care if I make a mistake."
+            },
+            {
+              "Say": "Your farm has more corners than I expected. I get lost between the shed and the pond every time."
+            },
+            {
+              "Say": "The farmer's life looks hard. But you get to see what your work turns into. I like that."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic10",
+          "Label": "Ask about the future",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I thought I'd have a plan by now. I have a notebook full of plays and a pair of shoes that squeak."
+            },
+            {
+              "Say": "Maybe I want to coach someday. Maybe I want to play until my knees tell me to stop. Both sound possible."
+            },
+            {
+              "Say": "I don't want to become a person who only remembers the game. I want to keep making new memories with it."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic11",
+          "Label": "Ask about confidence",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "People say confidence is pretending you aren't nervous. I think it's showing up while you're nervous and tying your shoes anyway."
+            },
+            {
+              "Say": "I still hate missing an easy shot. I just don't let it ruin the next ten minutes anymore."
+            },
+            {
+              "Say": "Grandma says I always had more courage than I knew. She would say that. Still, it helps."
+            }
+          ]
+        },
+        {
+          "Id": "Alex_Topic12",
+          "Label": "Ask about town events",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The egg festival is chaos. Everybody acts like the eggs are worth a year's salary."
+            },
+            {
+              "Say": "I like the fair because you can enter something without being the best at it. The prize is mostly a ribbon and a story."
+            },
+            {
+              "Say": "If you enter the fishing contest, I will cheer. I will also give you terrible advice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Alex_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        {
+          "Random": [
+            {
+              "Steps": [
+                {
+                  "Say": "Evelyn asked me whether I'm happy. I said yes, then changed the subject to the weather."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Alex",
+                    "Options": [
+                      {
+                        "Label": "Maybe she wanted the longer answer.",
+                        "Steps": [
+                          {
+                            "Say": "Probably. She can wait. I don't know what the longer answer is yet.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Tell her one thing you enjoyed today.",
+                        "Steps": [
+                          {
+                            "Say": "I could tell her about the run. Or the time with you. Both are true.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Ask her the same question back.",
+                        "Steps": [
+                          {
+                            "Say": "She'd say yes and then ask whether I've eaten. That's how she answers everything.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "I'm thinking of entering the fair's strength contest. George says I should let somebody else win for once."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Alex",
+                    "Options": [
+                      {
+                        "Label": "Win fairly. That's the point.",
+                        "Steps": [
+                          {
+                            "Say": "That's what I plan to do. I can be competitive without being a sore loser. Probably.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Let George enter instead.",
+                        "Steps": [
+                          {
+                            "Say": "He'd pretend not to want to, then train all week. I can see it already.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Enter something silly too.",
+                        "Steps": [
+                          {
+                            "Say": "A pie-eating contest? Grandma would be proud. George would deny knowing me.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "I found my old shoes from when I was twelve. They're tiny. I thought I'd feel something dramatic."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Alex",
+                    "Options": [
+                      {
+                        "Label": "You can keep them as a reminder.",
+                        "Steps": [
+                          {
+                            "Say": "Maybe. They're worn through at the heel. I used to run everywhere.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Take a picture and pass them on.",
+                        "Steps": [
+                          {
+                            "Say": "That's a good idea. Somebody else might get a kick out of them. Literally.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Throw them out. You don't need them.",
+                        "Steps": [
+                          {
+                            "Say": "I know. I just wanted to see them. That's all.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "Sam wants me in a music video. She says I can do a slow-motion catch."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Alex",
+                    "Options": [
+                      {
+                        "Label": "Do it. You'll look ridiculous.",
+                        "Steps": [
+                          {
+                            "Say": "I look ridiculous in half my clothes. At least this would be intentional.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Ask what the song is about first.",
+                        "Steps": [
+                          {
+                            "Say": "She'll tell me it's about a sock. I can feel it.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Offer to help with the camera instead.",
+                        "Steps": [
+                          {
+                            "Say": "I could do that. I like being involved without being the centre of the frame.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Alex_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        {
+          "Narrate": "You find a quiet place with Alex. Nobody is in a hurry to leave."
+        },
+        {
+          "Pause": 800
+        },
+        {
+          "Random": [
+            {
+              "Weight": 3,
+              "Steps": [
+                {
+                  "Narrate": "You pass the ball back and forth across the empty field. Alex stops counting after the first few minutes."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "Don't tell anyone, but I think that was more fun than the last tournament."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "At the beach, Alex shows you a stretch she learned from an older player. She corrects your footing, then laughs at her own demonstration."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "Okay, that was a terrible example. I can do it properly. Give me a second."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "Evelyn brings out lemonade and two plates of cookies. Alex takes one, then quietly wraps another for George."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "He'll say he doesn't want it. Leave it by his chair. He'll eat it later."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "You watch the sun lower behind the pier. Alex keeps the ball still between her feet."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "I like this. No whistle, no scoreboard, just the sound of the water."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Alex_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Alex",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        {
+          "Id": "Alex_Memory1",
+          "Label": "Remember the first visit?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The beach practice was the first time in a while I stopped checking the time. I want to do that again."
+        },
+        {
+          "Id": "Alex_Memory2",
+          "Label": "Remember what we decided?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "I put the photograph back in the album, but I know exactly where it is now."
+        },
+        {
+          "Id": "Alex_Memory3",
+          "Label": "Remember that afternoon?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "The game without a score turned out to be a good game. I keep forgetting that counts."
+        }
+      ]
+    }
+  ]
+}

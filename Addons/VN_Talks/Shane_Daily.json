@@ -1,0 +1,542 @@
+{
+  "Npcs": [
+    "Shane"
+  ],
+  "Actions": [
+    {
+      "Id": "Shane_Topics",
+      "Label": "Talk about...",
+      "Prompt": "Shane",
+      "Order": 40,
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Children": [
+        {
+          "Id": "Shane_Topic1",
+          "Label": "Ask about the blue chickens",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "They're fussy about the nesting boxes. One likes the corner, one likes the middle, and one acts like the whole coop is reserved."
+            },
+            {
+              "Say": "I can tell them apart by the way they walk. Don't ask me to explain it. I just can."
+            },
+            {
+              "Say": "Jas named the smallest one Pickle. The chicken is not a pickle. I stopped arguing because it was getting me nowhere."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic2",
+          "Label": "Ask about Jas",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "She's been drawing more lately. I put the pictures on the wall. Some of them are upside down, but that feels intentional."
+            },
+            {
+              "Say": "She asked if grown-ups ever get scared of the dark. I told her yes. She said, 'Then keep the lamp on.' Fair enough."
+            },
+            {
+              "Say": "I don't always know what to say to her. So I try to show up, and I try not to pretend I know everything."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic3",
+          "Label": "Ask about Marnie's ranch",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Marnie knows every animal's habits, injuries, and preferred breakfast. She says it's not difficult. She's lying about that last part."
+            },
+            {
+              "Say": "She can tell when I'm avoiding a conversation by the way I stack the feed bags. Apparently I have a very obvious system."
+            },
+            {
+              "Say": "She deserves a day off that doesn't involve somebody calling about a missing cow. I've been trying to cover the morning chores."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic4",
+          "Label": "Ask about the saloon",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Gus keeps the lights warm and the questions optional. That's why I still go sometimes."
+            },
+            {
+              "Say": "Pam tells the same story about the bus every week. I know all the pauses now. I still laugh at the wrong bit."
+            },
+            {
+              "Say": "I'm trying to decide that leaving early is allowed. It turns out the door works both ways."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic5",
+          "Label": "Ask about work at Joja",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The warehouse smelled like cardboard and floor cleaner. The clock was louder than the people."
+            },
+            {
+              "Say": "I learned to look busy when there wasn't anything to do. I still catch myself doing it in the barn."
+            },
+            {
+              "Say": "I don't miss the place. I miss knowing exactly when my shift ended. That's a different thing."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic6",
+          "Label": "Ask about cooking",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Pepper poppers are good when somebody else makes them. Mine come out like a dare."
+            },
+            {
+              "Say": "I put too much salt in the soup yesterday. Marnie said it was fine. She drank three glasses of water afterward."
+            },
+            {
+              "Say": "If you bring me a recipe, I'll try it. Don't expect a review. I'll give you a grunt and a thumbs-up."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic7",
+          "Label": "Ask about sleep",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "The nights are better when I don't take the whole day to bed with me. Not a perfect system, but a start."
+            },
+            {
+              "Say": "I leave the window cracked when it rains. The sound covers the clock. The clock's a real nuisance."
+            },
+            {
+              "Say": "Some mornings I wake up before the alarm and don't immediately start counting what went wrong. That's new."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic8",
+          "Label": "Ask about the valley",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "People here notice when a fence is broken. Sometimes they notice before the person who owns the fence."
+            },
+            {
+              "Say": "The bus stop looks different now that it's running again. I still remember when it was just a place to stand and wait."
+            },
+            {
+              "Say": "You made the old farm feel busy again. Even from the ranch, we can hear the shipping bin lid."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic9",
+          "Label": "Ask about being alone",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I like having a room to myself. I don't like feeling like I need an excuse to use it."
+            },
+            {
+              "Say": "The difference is probably obvious to everybody else. It took me a while."
+            },
+            {
+              "Say": "You don't have to fill every silence. Sometimes you can just sit there and let the kettle finish."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic10",
+          "Label": "Ask about the future",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "I'm not making a five-year plan. I don't even trust a five-day plan yet."
+            },
+            {
+              "Say": "I know what I want tomorrow to look like. Feed the chickens, fix the small fence, eat something decent."
+            },
+            {
+              "Say": "That's enough for now. Maybe later I'll want something bigger. I'm trying not to rush it."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic11",
+          "Label": "Ask about gifts",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Don't buy me something because you think I need cheering up. If you see something I'd actually use, that's different."
+            },
+            {
+              "Say": "A good coffee mug is a serious purchase. It has to fit the hand and not wobble on the table."
+            },
+            {
+              "Say": "Jas made me a bracelet out of string. It's too small for my wrist, so I tied it around the thermos."
+            }
+          ]
+        },
+        {
+          "Id": "Shane_Topic12",
+          "Label": "Ask about the farm",
+          "Limit": "Day",
+          "Friendship": 5,
+          "AddCounters": {
+            "Topics_{{NpcName}}": 1
+          },
+          "Steps": [
+            {
+              "Say": "Your animals are loud in the morning. That's not a complaint. It's a pretty good sound to wake up to."
+            },
+            {
+              "Say": "I can help carry feed if you get a delivery. I won't promise to smile while doing it."
+            },
+            {
+              "Say": "The first time I visited, I thought the farm would swallow you whole. Looks like you taught it some manners."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Shane_Moment",
+      "Label": "Say something",
+      "Order": 45,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HAS_MET Current {{NpcName}}",
+      "Steps": [
+        {
+          "Random": [
+            {
+              "Steps": [
+                {
+                  "Say": "Marnie says I should take a day off. I said I would. Now I'm staring at the calendar like it's a trap."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Shane",
+                    "Options": [
+                      {
+                        "Label": "Tell her you'll take Sunday and mean it.",
+                        "Steps": [
+                          {
+                            "Say": "Sunday. No excuses. If I start inventing chores, you can take the screwdriver away.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Ask what she'd do with a free day.",
+                        "Steps": [
+                          {
+                            "Say": "Probably sleep. Maybe walk. ...I could do that. I don't need a full itinerary.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Offer to cover the morning chores.",
+                        "Steps": [
+                          {
+                            "Say": "That'd help. Don't make a big thing of it. I'll owe you a quiet breakfast.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "I found an old photo from Joja. Everyone looks exhausted. I look like I was trying to disappear."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Shane",
+                    "Options": [
+                      {
+                        "Label": "You look like you were getting through it.",
+                        "Steps": [
+                          {
+                            "Say": "Yeah. That's what it was. Getting through it. Doesn't mean I want to go back.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Keep it as a reminder of how far you've come.",
+                        "Steps": [
+                          {
+                            "Say": "Maybe. I'll put it in a drawer, not on the wall. That's as sentimental as I get.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Throw it away if you don't want it.",
+                        "Steps": [
+                          {
+                            "Say": "I might. Not today, though. I want to decide when I'm not annoyed.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "Jas wants to enter a drawing in the fair. She's worried the other kids will laugh."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Shane",
+                    "Options": [
+                      {
+                        "Label": "Tell her you'll stand with her.",
+                        "Steps": [
+                          {
+                            "Say": "I'll be there. She can look over and see me making a face at anyone who laughs.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Help her practise showing it to people.",
+                        "Steps": [
+                          {
+                            "Say": "Good idea. We can put it on the feed shed first. The chickens are a harsh audience.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Remind her she likes making things.",
+                        "Steps": [
+                          {
+                            "Say": "That's what I'll say. Then I'll help her find the blue pencil she lost. Again.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Steps": [
+                {
+                  "Say": "The saloon was full last night. I left before it got too loud. Pam said she'd save my seat."
+                },
+                {
+                  "Ask": {
+                    "Prompt": "Shane",
+                    "Options": [
+                      {
+                        "Label": "That's kind of her.",
+                        "Steps": [
+                          {
+                            "Say": "Yeah. She doesn't make a speech about it. Just saves the seat. I appreciate that.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "Maybe you can invite someone next time.",
+                        "Steps": [
+                          {
+                            "Say": "Maybe. One person. Two at most. Don't turn it into an event.",
+                            "Friendship": 5
+                          }
+                        ]
+                      },
+                      {
+                        "Label": "You can leave whenever you want.",
+                        "Steps": [
+                          {
+                            "Say": "I know. I'm practising remembering that when the room gets noisy.",
+                            "Friendship": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Shane_Together",
+      "Label": "Spend some time together",
+      "Order": 48,
+      "Limit": "Day",
+      "Conditions": "PLAYER_HEARTS Current {{NpcName}} 3",
+      "Friendship": 10,
+      "Steps": [
+        {
+          "Narrate": "You find a quiet place with Shane. Nobody is in a hurry to leave."
+        },
+        {
+          "Pause": 800
+        },
+        {
+          "Random": [
+            {
+              "Weight": 3,
+              "Steps": [
+                {
+                  "Narrate": "Rain keeps the chickens under the eaves. Shane shares the dry patch with you and pretends she isn't making room."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "It's a decent place to sit. The roof leaks over there, though. Don't get attached to that corner."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "The two of you sort a basket of eggs. Shane checks each shell twice, then lets you handle the easy ones."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "You have a gentle touch. Don't tell the chickens. They'll start expecting professional service."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "At sunset, Shane brings two mugs out to the coop. One has a chipped handle, but she uses it anyway."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "I kept the good one for you. Don't ask why. I just did."
+                }
+              ]
+            },
+            {
+              "Weight": 2,
+              "Steps": [
+                {
+                  "Narrate": "You walk the ranch fence and stop where the grass meets the forest path. A chicken follows for three steps, then gives up."
+                },
+                {
+                  "Pause": 700
+                },
+                {
+                  "Say": "She'll come back. They always do. ...I think that's why I like this place."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "Shane_Memories",
+      "Label": "Remember when...",
+      "Prompt": "Shane",
+      "Order": 60,
+      "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+      "Children": [
+        {
+          "Id": "Shane_Memory1",
+          "Label": "Remember the first visit?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch1_{{NpcName}}",
+          "Say": "The latch finally stayed shut. I still check it when the wind picks up. Habit. At least this one's useful."
+        },
+        {
+          "Id": "Shane_Memory2",
+          "Label": "Remember what we decided?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch2_{{NpcName}}",
+          "Say": "That morning with the thermos? I washed it before bed. Small thing, but I remembered to do it."
+        },
+        {
+          "Id": "Shane_Memory3",
+          "Label": "Remember that afternoon?",
+          "Limit": "Day",
+          "Friendship": 5,
+          "Conditions": "Fouky.CharacterInteract_HAS_FLAG Ch3_{{NpcName}}",
+          "Say": "The coop sign is still crooked. Jas says it gives the place character. I'm not arguing with her."
+        }
+      ]
+    }
+  ]
+}
